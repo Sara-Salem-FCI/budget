@@ -1,0 +1,108 @@
+{
+  "@@locale": "ar",
+  "app_title": "Budget",
+  "skip": "تخطي",
+  "next": "التالي",
+  "start_now": "ابدأ الآن",
+  "arabic": "العربية",
+  "english": "الإنجليزية",
+  "onboarding_title_1": "اكتشف السيارات بكل سهولة",
+  "onboarding_desc_1": "تصفح مجموعة كبيرة من السيارات المستعملة من كل الماركات والموديلات وكلها في مكان واحد.",
+  "onboarding_title_2": "اختر اللي يناسبك بثقة",
+  "onboarding_desc_2": "شوف تقييمات البائعين، وقارن الأسعار، وتأكد إنك تختار الصفقة اللي تناسبك.",
+  "onboarding_title_3": "اشتر سيارتك المثالية بسهولة",
+  "onboarding_desc_3": "تصفح الماركات والموديلات اللي تناسبك، وقارن الأسعار عشان تختار أفضل صفقة بثقة.",
+  "welcome_to_budget": "مرحباً بكم في Budget!",
+  "budget_home": "الرئيسية",
+  "login": "تسجيل الدخول",
+  "welcome_back": "مرحبًا بعودتك من جديد!",
+  "email": "البريد الالكتروني",
+  "email_hint": "ادخل بريدك الالكتروني",
+  "password": "كلمة السر",
+  "password_hint": "ادخل كلمة السر",
+  "forgot_password": "نسيت كلمة السر؟",
+  "remember_me": "تذكرني",
+  "dont_have_account": "ليس لديك حساب ؟",
+  "create_account": "انشاء حساب",
+  "or": "أو",
+  "login_as_guest": "الدخول كضيف",
+  "full_name": "الاسم بالكامل",
+  "full_name_hint": "ادخل اسمك بالكامل",
+  "phone_number": "رقم الهاتف",
+  "phone_number_hint": "ادخل رقم الهاتف",
+  "confirm_password": "تأكيد كلمة السر",
+  "confirm_password_hint": "اعد ادخال كلمة السر",
+  "agree_to_terms": "الموافقة على ",
+  "terms_and_conditions": "الشروط والاحكام",
+  "already_have_account": "لديك حساب بالفعل؟",
+  "register": "إنشاء حساب",
+  "forgot_password_title": "نسيت كلمة السر",
+  "forgot_password_desc": "الرجاء إدخال رقم هاتفك. سوف نرسل لك رمزًا إلى رقمك لإعادة تعيين كلمة المرور",
+  "send": "ارسال",
+  "verification_code_title": "رمز التحقق",
+  "verification_code_desc": "ادخل رمز التحقق الذي تم ارساله لرقم هاتفك",
+  "did_not_receive_code": "لم تستلم الرمز؟ ",
+  "resend_code": "أعد الإرسال",
+  "new_password_title": "تعيين كلمة سر جديدة",
+  "new_password_desc": "اضف كلمة سر جديده لزيادة امان حسابك",
+  "save": "حفظ",
+  "passwords_do_not_match": "كلمات المرور غير متطابقة",
+  "field_required": "هذا الحقل مطلوب",
+  "invalid_email": "بريد إلكتروني غير صالح",
+  "password_too_short": "كلمة المرور يجب أن تكون 8 أحرف على الأقل",
+  "password_mixed_case": "يجب أن تحتوي على أحرف كبيرة وصغيرة",
+  "password_symbols": "يجب أن تحتوي على رموز (!@#$)",
+  "session_expired": "انتهت صلاحية الجلسة، حاول مرة أخرى",
+  "invalid_phone_number": "رقم الهاتف غير صحيح",
+  "error_connection_timeout": "انتهت مهلة الاتصال بالخادم",
+  "error_bad_response": "خطأ في استجابة الخادم",
+  "error_request_cancelled": "تم إلغاء الطلب",
+  "error_no_internet": "لا يوجد اتصال بالإنترنت",
+  "error_unexpected_network": "حدث خطأ غير متوقع في الشبكة",
+  "error_unknown": "حدث خطأ غير معروف",
+  "error_unexpected": "حدث خطأ غير متوقع",
+  "welcome_name": "مرحبا، {name} !",
+  "@welcome_name": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "home_subtitle": "ابحث، قارن، واختر سيارتك المثالية بسهولة.",
+  "search_hint": "ابحث عن سيارة احلامك......",
+  "current_offers": "العروض الحالية",
+  "available_cars": "السيارات متاحة",
+  "recently_viewed": "المشاهدة حديثاً",
+  "more": "المزيد",
+  "show_details": "عرض التفاصيل",
+  "model_year": "موديل {year}",
+  "@model_year": {
+    "placeholders": {
+      "year": {
+        "type": "int"
+      }
+    }
+  },
+  "mileage_km": "{km} كم",
+  "@mileage_km": {
+    "placeholders": {
+      "km": {
+        "type": "String"
+      }
+    }
+  },
+  "nav_home": "الرئيسية",
+  "nav_search": "البحث",
+  "nav_favorites": "المفضلة",
+  "nav_profile": "حسابي",
+  "must_agree_to_terms": "يجب الموافقة على الشروط والأحكام",
+  "discount_label": "خصم {percentage}%",
+  "@discount_label": {
+    "placeholders": {
+      "percentage": {
+        "type": "int"
+      }
+    }
+  }
+}
