@@ -4,6 +4,8 @@ import 'package:budget/features/home/presentation/widgets/car_image_section.dart
 import 'package:budget/features/home/presentation/widgets/car_info_row.dart';
 import 'package:budget/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:budget/core/router/app_router.dart';
 
 class CarCardGrid extends StatelessWidget {
   final CarModel car;
@@ -106,7 +108,7 @@ class CarCardGrid extends StatelessWidget {
                           width: double.infinity,
                           height: 32,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () => context.push(AppRouter.carDetails, extra: car),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFF053E94),
                               foregroundColor: Colors.white,

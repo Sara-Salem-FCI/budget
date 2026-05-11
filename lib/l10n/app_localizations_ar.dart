@@ -724,8 +724,83 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get privacy_section_9_item_3 =>
-      'اعتبار استمرارك في استخدام التطبيق موافقة على التحديثات';
+      'الاستمرار في استخدام التطبيق يعتبر موافقة على التحديثات';
 
   @override
   String get riyadh => 'الرياض';
+
+  @override
+  String get installment_starts_from => 'قسط شهري يبدأ من:';
+
+  @override
+  String get transmission => 'ناقل الحركة';
+
+  @override
+  String get category_label => 'الفئة';
+
+  @override
+  String get details_tab => 'تفاصيل';
+
+  @override
+  String get description_tab => 'وصف';
+
+  @override
+  String get engine_label => 'المحرك';
+
+  @override
+  String get car_mileage_label => 'المسافة المقطوعة';
+
+  @override
+  String get car_condition_label => 'حالة السيارة';
+
+  @override
+  String get color_label => 'اللون';
+
+  @override
+  String get showroom_name_label => 'اسم المعرض';
+
+  @override
+  String get location_on_map => 'الموقع';
+
+  @override
+  String get call_button => 'اتصال';
+
+  @override
+  String get send_inquiry_button => 'أرسل استفسارك';
+
+  @override
+  String get automatic => 'أوتوماتيك';
+
+  @override
+  String get manual => 'يدوي';
+
+  @override
+  String get standard => 'ستاندر';
+
+  @override
+  String get full => 'فل كامل';
+
+  @override
+  String get used_condition => 'مستعملة';
+
+  @override
+  String get new_condition => 'جديدة';
+
+  @override
+  String get gasoline_fuel => 'بنزين';
+
+  @override
+  String get diesel_fuel => 'ديزل';
+
+  @override
+  String get black_color => 'اسود';
+
+  @override
+  String get white_color => 'ابيض';
+
+  @override
+  String get model => 'الموديل';
+
+  @override
+  String get year_label => 'سنة الصنع';
 }

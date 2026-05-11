@@ -11,6 +11,18 @@ class CarModel extends Equatable {
   final String price;
   final String? location;
   
+  // Details fields
+  final String? transmission;
+  final String? category;
+  final String? engine;
+  final String? fuelType;
+  final String? mileage;
+  final String? condition;
+  final String? color;
+  final String? showroomName;
+  final String? installmentPrice;
+  final String? description;
+  
   // Flattened from discount
   final int discount;
   final bool hasDiscount;
@@ -26,6 +38,16 @@ class CarModel extends Equatable {
     required this.year,
     required this.price,
     this.location,
+    this.transmission,
+    this.category,
+    this.engine,
+    this.fuelType,
+    this.mileage,
+    this.condition,
+    this.color,
+    this.showroomName,
+    this.installmentPrice,
+    this.description,
     required this.discount,
     required this.hasDiscount,
     required this.isFav,
@@ -44,6 +66,16 @@ class CarModel extends Equatable {
       year: (info['year'] as num?)?.toInt() ?? 0,
       price: info['price']?.toString() ?? '',
       location: info['location']?.toString(),
+      transmission: info['transmission']?.toString(),
+      category: info['category']?.toString(),
+      engine: info['engine']?.toString(),
+      fuelType: info['fuel_type']?.toString(),
+      mileage: info['mileage']?.toString(),
+      condition: info['condition']?.toString(),
+      color: info['color']?.toString(),
+      showroomName: info['showroom_name']?.toString(),
+      installmentPrice: info['installment_price']?.toString(),
+      description: json['description']?.toString(),
       discount: (disc['discount'] as num?)?.toInt() ?? 0,
       hasDiscount: disc['has_discount'] as bool? ?? false,
       isFav: json['is_fav'] as bool? ?? false,
@@ -60,7 +92,17 @@ class CarModel extends Equatable {
       'year': year,
       'price': price,
       'location': location,
+      'transmission': transmission,
+      'category': category,
+      'engine': engine,
+      'fuel_type': fuelType,
+      'mileage': mileage,
+      'condition': condition,
+      'color': color,
+      'showroom_name': showroomName,
+      'installment_price': installmentPrice,
     },
+    'description': description,
     'discount': {
       'discount': discount,
       'has_discount': hasDiscount,
@@ -77,6 +119,16 @@ class CarModel extends Equatable {
     int? year,
     String? price,
     String? location,
+    String? transmission,
+    String? category,
+    String? engine,
+    String? fuelType,
+    String? mileage,
+    String? condition,
+    String? color,
+    String? showroomName,
+    String? installmentPrice,
+    String? description,
     int? discount,
     bool? hasDiscount,
     bool? isFav,
@@ -90,6 +142,16 @@ class CarModel extends Equatable {
       year: year ?? this.year,
       price: price ?? this.price,
       location: location ?? this.location,
+      transmission: transmission ?? this.transmission,
+      category: category ?? this.category,
+      engine: engine ?? this.engine,
+      fuelType: fuelType ?? this.fuelType,
+      mileage: mileage ?? this.mileage,
+      condition: condition ?? this.condition,
+      color: color ?? this.color,
+      showroomName: showroomName ?? this.showroomName,
+      installmentPrice: installmentPrice ?? this.installmentPrice,
+      description: description ?? this.description,
       discount: discount ?? this.discount,
       hasDiscount: hasDiscount ?? this.hasDiscount,
       isFav: isFav ?? this.isFav,
@@ -106,6 +168,16 @@ class CarModel extends Equatable {
         year,
         price,
         location,
+        transmission,
+        category,
+        engine,
+        fuelType,
+        mileage,
+        condition,
+        color,
+        showroomName,
+        installmentPrice,
+        description,
         discount,
         hasDiscount,
         isFav,

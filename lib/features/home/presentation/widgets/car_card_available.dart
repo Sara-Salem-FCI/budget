@@ -5,6 +5,8 @@ import 'package:budget/features/home/presentation/widgets/car_image_section.dart
 import 'package:budget/features/home/presentation/widgets/car_info_row.dart';
 import 'package:budget/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:budget/core/router/app_router.dart';
 
 /// A premium vertical card widget designed specifically for the "Available Cars" page.
 /// It features a rounded top image, price section with brand colors, and car details.
@@ -16,7 +18,7 @@ class CarCardAvailable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    
+
     return Container(
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -41,7 +43,7 @@ class CarCardAvailable extends StatelessWidget {
               borderRadius: 24,
             ),
           ),
-          
+
           // 2. Content Section
           Expanded(
             flex: 6,
@@ -61,15 +63,15 @@ class CarCardAvailable extends StatelessWidget {
                   bottomRight: Radius.circular(24),
                 ),
               ),
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _PriceSection(car: car, l10n: l10n),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 6),
                   _InfoSection(car: car, l10n: l10n),
                   const Spacer(),
-                  _DetailsButton(l10n: l10n),
+                  _DetailsButton(l10n: l10n, car: car),
                 ],
               ),
             ),
@@ -115,12 +117,12 @@ class _InfoSection extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           style: AppStyles.body2ExtraBold.copyWith(fontSize: 16),
         ),
-        const SizedBox(height: 6),
+        const SizedBox(height: 4),
         CarInfoRow(
           icon: Icons.location_on_outlined,
           label: car.location ?? l10n.riyadh,
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: 2),
         CarInfoRow(
           icon: Icons.speed_outlined,
           label: l10n.mileage_km('16,000'),
@@ -132,16 +134,17 @@ class _InfoSection extends StatelessWidget {
 
 class _DetailsButton extends StatelessWidget {
   final AppLocalizations l10n;
+  final CarModel car;
 
-  const _DetailsButton({required this.l10n});
+  const _DetailsButton({required this.l10n, required this.car});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 40,
+      height: 38,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () => context.push(AppRouter.carDetails, extra: car),
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.white,

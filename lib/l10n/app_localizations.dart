@@ -1417,6 +1417,156 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Riyadh'**
   String get riyadh;
+
+  /// No description provided for @installment_starts_from.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly installment starts from:'**
+  String get installment_starts_from;
+
+  /// No description provided for @transmission.
+  ///
+  /// In en, this message translates to:
+  /// **'Transmission'**
+  String get transmission;
+
+  /// No description provided for @category_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get category_label;
+
+  /// No description provided for @details_tab.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get details_tab;
+
+  /// No description provided for @description_tab.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description_tab;
+
+  /// No description provided for @engine_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Engine'**
+  String get engine_label;
+
+  /// No description provided for @car_mileage_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Mileage'**
+  String get car_mileage_label;
+
+  /// No description provided for @car_condition_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Condition'**
+  String get car_condition_label;
+
+  /// No description provided for @color_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Color'**
+  String get color_label;
+
+  /// No description provided for @showroom_name_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Showroom'**
+  String get showroom_name_label;
+
+  /// No description provided for @location_on_map.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get location_on_map;
+
+  /// No description provided for @call_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Call'**
+  String get call_button;
+
+  /// No description provided for @send_inquiry_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Inquiry'**
+  String get send_inquiry_button;
+
+  /// No description provided for @automatic.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic'**
+  String get automatic;
+
+  /// No description provided for @manual.
+  ///
+  /// In en, this message translates to:
+  /// **'Manual'**
+  String get manual;
+
+  /// No description provided for @standard.
+  ///
+  /// In en, this message translates to:
+  /// **'Standard'**
+  String get standard;
+
+  /// No description provided for @full.
+  ///
+  /// In en, this message translates to:
+  /// **'Full'**
+  String get full;
+
+  /// No description provided for @used_condition.
+  ///
+  /// In en, this message translates to:
+  /// **'Used'**
+  String get used_condition;
+
+  /// No description provided for @new_condition.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get new_condition;
+
+  /// No description provided for @gasoline_fuel.
+  ///
+  /// In en, this message translates to:
+  /// **'Gasoline'**
+  String get gasoline_fuel;
+
+  /// No description provided for @diesel_fuel.
+  ///
+  /// In en, this message translates to:
+  /// **'Diesel'**
+  String get diesel_fuel;
+
+  /// No description provided for @black_color.
+  ///
+  /// In en, this message translates to:
+  /// **'Black'**
+  String get black_color;
+
+  /// No description provided for @white_color.
+  ///
+  /// In en, this message translates to:
+  /// **'White'**
+  String get white_color;
+
+  /// No description provided for @model.
+  ///
+  /// In en, this message translates to:
+  /// **'Model'**
+  String get model;
+
+  /// No description provided for @year_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get year_label;
 }
 
 class _AppLocalizationsDelegate

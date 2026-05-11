@@ -740,4 +740,79 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get riyadh => 'Riyadh';
+
+  @override
+  String get installment_starts_from => 'Monthly installment starts from:';
+
+  @override
+  String get transmission => 'Transmission';
+
+  @override
+  String get category_label => 'Category';
+
+  @override
+  String get details_tab => 'Details';
+
+  @override
+  String get description_tab => 'Description';
+
+  @override
+  String get engine_label => 'Engine';
+
+  @override
+  String get car_mileage_label => 'Mileage';
+
+  @override
+  String get car_condition_label => 'Condition';
+
+  @override
+  String get color_label => 'Color';
+
+  @override
+  String get showroom_name_label => 'Showroom';
+
+  @override
+  String get location_on_map => 'Location';
+
+  @override
+  String get call_button => 'Call';
+
+  @override
+  String get send_inquiry_button => 'Inquiry';
+
+  @override
+  String get automatic => 'Automatic';
+
+  @override
+  String get manual => 'Manual';
+
+  @override
+  String get standard => 'Standard';
+
+  @override
+  String get full => 'Full';
+
+  @override
+  String get used_condition => 'Used';
+
+  @override
+  String get new_condition => 'New';
+
+  @override
+  String get gasoline_fuel => 'Gasoline';
+
+  @override
+  String get diesel_fuel => 'Diesel';
+
+  @override
+  String get black_color => 'Black';
+
+  @override
+  String get white_color => 'White';
+
+  @override
+  String get model => 'Model';
+
+  @override
+  String get year_label => 'Year';
 }

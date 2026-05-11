@@ -19,6 +19,8 @@ import 'package:budget/features/notifications/presentation/pages/notifications_p
 import 'package:budget/features/profile/presentation/pages/terms_and_conditions_page.dart';
 
 import 'package:budget/features/profile/presentation/pages/privacy_policy_page.dart';
+import 'package:budget/features/home/presentation/pages/car_details_page.dart';
+import 'package:budget/features/home/data/models/car_model.dart';
 
 /// Centralized router configuration for the application.
 abstract class AppRouter {
@@ -38,6 +40,7 @@ abstract class AppRouter {
   static const String notifications = '/notifications';
   static const String termsAndConditions = '/terms-conditions';
   static const String privacyPolicy = '/privacy-policy';
+  static const String carDetails = '/car-details';
 
   static final router = GoRouter(
     initialLocation: splash,
@@ -45,6 +48,10 @@ abstract class AppRouter {
       GoRoute(
         path: privacyPolicy,
         builder: (context, state) => const PrivacyPolicyPage(),
+      ),
+      GoRoute(
+        path: carDetails,
+        builder: (context, state) => CarDetailsPage(car: state.extra as CarModel),
       ),
       GoRoute(
         path: termsAndConditions,
