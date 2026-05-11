@@ -763,6 +763,660 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No'**
   String get no;
+
+  /// No description provided for @terms_intro.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Budget, a platform specialized in displaying, buying and selling cars and connecting sellers with buyers. By using the application, you acknowledge your full agreement to the terms and conditions mentioned below. Please read them carefully before using our services.'**
+  String get terms_intro;
+
+  /// No description provided for @terms_section_1_title.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Acceptance of Terms'**
+  String get terms_section_1_title;
+
+  /// No description provided for @terms_section_1_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'By using the app or creating an account, you fully agree to be bound by these terms. If you do not agree to any part of these terms, you must stop using the app immediately.'**
+  String get terms_section_1_desc;
+
+  /// No description provided for @terms_section_2_title.
+  ///
+  /// In en, this message translates to:
+  /// **'2. Eligibility'**
+  String get terms_section_2_title;
+
+  /// No description provided for @terms_section_2_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Users must be 18 years or older to use the application services.'**
+  String get terms_section_2_item_1;
+
+  /// No description provided for @terms_section_2_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'The user is committed to providing correct and accurate information upon registration.'**
+  String get terms_section_2_item_2;
+
+  /// No description provided for @terms_section_2_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'The user is responsible for maintaining the confidentiality of their account data and password.'**
+  String get terms_section_2_item_3;
+
+  /// No description provided for @terms_section_3_title.
+  ///
+  /// In en, this message translates to:
+  /// **'3. Nature of Service'**
+  String get terms_section_3_title;
+
+  /// No description provided for @terms_section_3_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'The app provides a platform for car listing and communication between buyer and seller and is not a party to the sale or purchase process.'**
+  String get terms_section_3_item_1;
+
+  /// No description provided for @terms_section_3_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'The app is not responsible for inspecting cars or guaranteeing their quality or conformity to the displayed specifications.'**
+  String get terms_section_3_item_2;
+
+  /// No description provided for @terms_section_3_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Any agreement between the buyer and seller is outside the responsibility of the application.'**
+  String get terms_section_3_item_3;
+
+  /// No description provided for @terms_section_4_title.
+  ///
+  /// In en, this message translates to:
+  /// **'4. Seller Obligations'**
+  String get terms_section_4_title;
+
+  /// No description provided for @terms_section_4_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Provide correct and clear information about the car.'**
+  String get terms_section_4_item_1;
+
+  /// No description provided for @terms_section_4_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Do not post stolen or illegal cars.'**
+  String get terms_section_4_item_2;
+
+  /// No description provided for @terms_section_4_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Commit to not manipulating prices or data or using misleading images.'**
+  String get terms_section_4_item_3;
+
+  /// No description provided for @terms_section_4_item_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Take full legal responsibility for the accuracy of the ad data.'**
+  String get terms_section_4_item_4;
+
+  /// No description provided for @terms_section_5_title.
+  ///
+  /// In en, this message translates to:
+  /// **'5. Buyer Obligations'**
+  String get terms_section_5_title;
+
+  /// No description provided for @terms_section_5_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify the car condition before paying any amount.'**
+  String get terms_section_5_item_1;
+
+  /// No description provided for @terms_section_5_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Do not hold the application responsible for any fraud or dispute that occurs with the seller.'**
+  String get terms_section_5_item_2;
+
+  /// No description provided for @terms_section_5_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Commit to using the application legally without abuse.'**
+  String get terms_section_5_item_3;
+
+  /// No description provided for @terms_section_6_title.
+  ///
+  /// In en, this message translates to:
+  /// **'6. Prohibited Activities'**
+  String get terms_section_6_title;
+
+  /// No description provided for @terms_section_6_prohibited.
+  ///
+  /// In en, this message translates to:
+  /// **'Users are prohibited from:'**
+  String get terms_section_6_prohibited;
+
+  /// No description provided for @terms_section_6_p_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Posting misleading or incorrect ads'**
+  String get terms_section_6_p_item_1;
+
+  /// No description provided for @terms_section_6_p_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Using the app for scams or fraud'**
+  String get terms_section_6_p_item_2;
+
+  /// No description provided for @terms_section_6_p_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Posting content that violates laws or public morals'**
+  String get terms_section_6_p_item_3;
+
+  /// No description provided for @terms_section_6_p_item_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Abusing users or the support team'**
+  String get terms_section_6_p_item_4;
+
+  /// No description provided for @terms_section_6_p_item_5.
+  ///
+  /// In en, this message translates to:
+  /// **'Using multiple accounts for evasion'**
+  String get terms_section_6_p_item_5;
+
+  /// No description provided for @terms_section_6_rights.
+  ///
+  /// In en, this message translates to:
+  /// **'In case of violation, the application has the right to:'**
+  String get terms_section_6_rights;
+
+  /// No description provided for @terms_section_6_r_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete the ad'**
+  String get terms_section_6_r_item_1;
+
+  /// No description provided for @terms_section_6_r_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspend the account temporarily or permanently'**
+  String get terms_section_6_r_item_2;
+
+  /// No description provided for @terms_section_6_r_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Take necessary legal measures'**
+  String get terms_section_6_r_item_3;
+
+  /// No description provided for @terms_section_7_title.
+  ///
+  /// In en, this message translates to:
+  /// **'7. Payment and Commissions'**
+  String get terms_section_7_title;
+
+  /// No description provided for @terms_section_7_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'The app may charge fees for ads or premium services if clarified within the app.'**
+  String get terms_section_7_item_1;
+
+  /// No description provided for @terms_section_7_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'All fees are non-refundable after payment.'**
+  String get terms_section_7_item_2;
+
+  /// No description provided for @terms_section_7_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'The user bears any additional taxes or fees related to the service.'**
+  String get terms_section_7_item_3;
+
+  /// No description provided for @terms_section_8_title.
+  ///
+  /// In en, this message translates to:
+  /// **'8. Disclaimer'**
+  String get terms_section_8_title;
+
+  /// No description provided for @terms_section_8_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'The app is not responsible for the quality, accuracy or technical condition of the cars.'**
+  String get terms_section_8_item_1;
+
+  /// No description provided for @terms_section_8_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'The app does not bear any financial losses or damages resulting from transactions between parties.'**
+  String get terms_section_8_item_2;
+
+  /// No description provided for @terms_section_8_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'The user is responsible for verifying car papers and condition before purchase.'**
+  String get terms_section_8_item_3;
+
+  /// No description provided for @terms_section_9_title.
+  ///
+  /// In en, this message translates to:
+  /// **'9. Amendments to Terms'**
+  String get terms_section_9_title;
+
+  /// No description provided for @terms_section_9_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'The application management has the right to modify the terms at any time, and your continued use of the application after the update is considered an automatic agreement to the new modifications.'**
+  String get terms_section_9_desc;
+
+  /// No description provided for @terms_section_10_title.
+  ///
+  /// In en, this message translates to:
+  /// **'10. Intellectual Property'**
+  String get terms_section_10_title;
+
+  /// No description provided for @terms_section_10_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'All application content (name, design, logos, images, codes) is owned by the application and may not be used or copied without official permission.'**
+  String get terms_section_10_desc;
+
+  /// No description provided for @terms_section_11_title.
+  ///
+  /// In en, this message translates to:
+  /// **'11. Termination of Service'**
+  String get terms_section_11_title;
+
+  /// No description provided for @terms_section_11_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'The app has the right to stop or disable any account that violates usage policies without prior notice.'**
+  String get terms_section_11_desc;
+
+  /// No description provided for @terms_section_12_title.
+  ///
+  /// In en, this message translates to:
+  /// **'12. Governing Law'**
+  String get terms_section_12_title;
+
+  /// No description provided for @terms_section_12_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'These terms are subject to the laws applicable in the Kingdom of Saudi Arabia.'**
+  String get terms_section_12_desc;
+
+  /// No description provided for @legal_consent.
+  ///
+  /// In en, this message translates to:
+  /// **'By using the application, you agree to all the terms and conditions mentioned above.'**
+  String get legal_consent;
+
+  /// No description provided for @privacy_intro.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Budget. We are committed to protecting your privacy and ensuring the security of your personal data. This Privacy Policy explains how we collect, use, protect, and disclose information when you use the app.'**
+  String get privacy_intro;
+
+  /// No description provided for @privacy_section_1_title.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Information We Collect'**
+  String get privacy_section_1_title;
+
+  /// No description provided for @privacy_section_1_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'We may collect the following information when using the application:'**
+  String get privacy_section_1_desc;
+
+  /// No description provided for @privacy_section_1_sub_a.
+  ///
+  /// In en, this message translates to:
+  /// **'A. Personal Information:'**
+  String get privacy_section_1_sub_a;
+
+  /// No description provided for @privacy_section_1_a_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get privacy_section_1_a_item_1;
+
+  /// No description provided for @privacy_section_1_a_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number'**
+  String get privacy_section_1_a_item_2;
+
+  /// No description provided for @privacy_section_1_a_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Email address'**
+  String get privacy_section_1_a_item_3;
+
+  /// No description provided for @privacy_section_1_a_item_4.
+  ///
+  /// In en, this message translates to:
+  /// **'City or location'**
+  String get privacy_section_1_a_item_4;
+
+  /// No description provided for @privacy_section_1_a_item_5.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal account information'**
+  String get privacy_section_1_a_item_5;
+
+  /// No description provided for @privacy_section_1_sub_b.
+  ///
+  /// In en, this message translates to:
+  /// **'B. App Usage Information:'**
+  String get privacy_section_1_sub_b;
+
+  /// No description provided for @privacy_section_1_b_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Device type and operating system'**
+  String get privacy_section_1_b_item_1;
+
+  /// No description provided for @privacy_section_1_b_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'IP address'**
+  String get privacy_section_1_b_item_2;
+
+  /// No description provided for @privacy_section_1_b_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Interaction history within the app'**
+  String get privacy_section_1_b_item_3;
+
+  /// No description provided for @privacy_section_1_b_item_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Pages visited within the app'**
+  String get privacy_section_1_b_item_4;
+
+  /// No description provided for @privacy_section_1_sub_c.
+  ///
+  /// In en, this message translates to:
+  /// **'C. Advertisement Data:'**
+  String get privacy_section_1_sub_c;
+
+  /// No description provided for @privacy_section_1_c_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Car photos uploaded by the user'**
+  String get privacy_section_1_c_item_1;
+
+  /// No description provided for @privacy_section_1_c_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Car description, price and information'**
+  String get privacy_section_1_c_item_2;
+
+  /// No description provided for @privacy_section_1_c_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact data included in the advertisement'**
+  String get privacy_section_1_c_item_3;
+
+  /// No description provided for @privacy_section_2_title.
+  ///
+  /// In en, this message translates to:
+  /// **'2. How We Use Information'**
+  String get privacy_section_2_title;
+
+  /// No description provided for @privacy_section_2_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'We use the collected data to:'**
+  String get privacy_section_2_desc;
+
+  /// No description provided for @privacy_section_2_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Improve user experience within the app'**
+  String get privacy_section_2_item_1;
+
+  /// No description provided for @privacy_section_2_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Facilitate communication between buyer and seller'**
+  String get privacy_section_2_item_2;
+
+  /// No description provided for @privacy_section_2_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Display ads appropriately and effectively'**
+  String get privacy_section_2_item_3;
+
+  /// No description provided for @privacy_section_2_item_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Develop app services and fix technical issues'**
+  String get privacy_section_2_item_4;
+
+  /// No description provided for @privacy_section_2_item_5.
+  ///
+  /// In en, this message translates to:
+  /// **'Send notifications related to services or app updates'**
+  String get privacy_section_2_item_5;
+
+  /// No description provided for @privacy_section_2_item_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Prevent fraud and abuse'**
+  String get privacy_section_2_item_6;
+
+  /// No description provided for @privacy_section_3_title.
+  ///
+  /// In en, this message translates to:
+  /// **'3. Information Sharing'**
+  String get privacy_section_3_title;
+
+  /// No description provided for @privacy_section_3_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'We do not sell personal data to any third party, but it may be shared in the following cases:'**
+  String get privacy_section_3_desc;
+
+  /// No description provided for @privacy_section_3_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'With data analysis companies to improve performance'**
+  String get privacy_section_3_item_1;
+
+  /// No description provided for @privacy_section_3_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'With technical service providers (Support – Hosting – Notifications)'**
+  String get privacy_section_3_item_2;
+
+  /// No description provided for @privacy_section_3_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'If officially requested by the competent legal authorities'**
+  String get privacy_section_3_item_3;
+
+  /// No description provided for @privacy_section_4_title.
+  ///
+  /// In en, this message translates to:
+  /// **'4. Data Protection'**
+  String get privacy_section_4_title;
+
+  /// No description provided for @privacy_section_4_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'We use security measures and encryption techniques to protect user data such as:'**
+  String get privacy_section_4_desc;
+
+  /// No description provided for @privacy_section_4_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Encrypting sensitive data'**
+  String get privacy_section_4_item_1;
+
+  /// No description provided for @privacy_section_4_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Protecting servers against hacking'**
+  String get privacy_section_4_item_2;
+
+  /// No description provided for @privacy_section_4_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Periodic assessments of system vulnerabilities'**
+  String get privacy_section_4_item_3;
+
+  /// No description provided for @privacy_section_4_footer.
+  ///
+  /// In en, this message translates to:
+  /// **'However, 100% protection cannot be guaranteed over the Internet.'**
+  String get privacy_section_4_footer;
+
+  /// No description provided for @privacy_section_5_title.
+  ///
+  /// In en, this message translates to:
+  /// **'5. Cookies'**
+  String get privacy_section_5_title;
+
+  /// No description provided for @privacy_section_5_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'The app may use cookies to improve the experience such as:'**
+  String get privacy_section_5_desc;
+
+  /// No description provided for @privacy_section_5_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Save user preferences'**
+  String get privacy_section_5_item_1;
+
+  /// No description provided for @privacy_section_5_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Performance analysis'**
+  String get privacy_section_5_item_2;
+
+  /// No description provided for @privacy_section_5_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Personalize appropriate content for the user'**
+  String get privacy_section_5_item_3;
+
+  /// No description provided for @privacy_section_5_footer.
+  ///
+  /// In en, this message translates to:
+  /// **'Users can disable them from browser settings if they wish.'**
+  String get privacy_section_5_footer;
+
+  /// No description provided for @privacy_section_6_title.
+  ///
+  /// In en, this message translates to:
+  /// **'6. User Rights'**
+  String get privacy_section_6_title;
+
+  /// No description provided for @privacy_section_6_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'The user has the right to:'**
+  String get privacy_section_6_desc;
+
+  /// No description provided for @privacy_section_6_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Request deletion of their account and data'**
+  String get privacy_section_6_item_1;
+
+  /// No description provided for @privacy_section_6_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Request modification of their personal data'**
+  String get privacy_section_6_item_2;
+
+  /// No description provided for @privacy_section_6_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Object to receiving marketing messages or notifications'**
+  String get privacy_section_6_item_3;
+
+  /// No description provided for @privacy_section_7_title.
+  ///
+  /// In en, this message translates to:
+  /// **'7. User Responsibility'**
+  String get privacy_section_7_title;
+
+  /// No description provided for @privacy_section_7_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'The user is responsible for:'**
+  String get privacy_section_7_desc;
+
+  /// No description provided for @privacy_section_7_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Maintaining the confidentiality of their account data'**
+  String get privacy_section_7_item_1;
+
+  /// No description provided for @privacy_section_7_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Any activity that takes place through their account'**
+  String get privacy_section_7_item_2;
+
+  /// No description provided for @privacy_section_7_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Entering correct information upon registration'**
+  String get privacy_section_7_item_3;
+
+  /// No description provided for @privacy_section_8_title.
+  ///
+  /// In en, this message translates to:
+  /// **'8. Children\'s Privacy'**
+  String get privacy_section_8_title;
+
+  /// No description provided for @privacy_section_8_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'The app is not intended for persons under 18 years of age. In case of proof of use by a child under this age, the data will be deleted immediately.'**
+  String get privacy_section_8_desc;
+
+  /// No description provided for @privacy_section_9_title.
+  ///
+  /// In en, this message translates to:
+  /// **'9. Amendments to Privacy Policy'**
+  String get privacy_section_9_title;
+
+  /// No description provided for @privacy_section_9_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'This policy may be updated from time to time, and in case of changes:'**
+  String get privacy_section_9_desc;
+
+  /// No description provided for @privacy_section_9_item_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Update the page'**
+  String get privacy_section_9_item_1;
+
+  /// No description provided for @privacy_section_9_item_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Change the last update date'**
+  String get privacy_section_9_item_2;
+
+  /// No description provided for @privacy_section_9_item_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Continued use of the app constitutes agreement to updates'**
+  String get privacy_section_9_item_3;
+
+  /// No description provided for @riyadh.
+  ///
+  /// In en, this message translates to:
+  /// **'Riyadh'**
+  String get riyadh;
 }
 
 class _AppLocalizationsDelegate

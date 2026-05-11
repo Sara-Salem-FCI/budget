@@ -101,7 +101,6 @@ class HomePage extends StatelessWidget {
                                 padding: const EdgeInsets.symmetric(horizontal: 16),
                                 child: SectionHeaderWidget(
                                   title: l10n.recently_viewed,
-                                  onMoreTap: () {},
                                 ),
                               ),
                               const SizedBox(height: 16),

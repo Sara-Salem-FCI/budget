@@ -86,7 +86,9 @@ class _CarImageSectionState extends State<CarImageSection> {
           ),
         ),
         if (widget.car.hasDiscount)
-          DiscountRibbon(label: '-${widget.car.discount}%'),
+          DiscountRibbon(
+            label: AppLocalizations.of(context)!.discount_label(widget.car.discount),
+          ),
         Positioned(
           top: 10,
           left: 10,

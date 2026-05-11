@@ -107,13 +107,13 @@ class _AvailableCarsPageState extends State<AvailableCarsPage> {
                       crossAxisCount: 2,
                       crossAxisSpacing: 16,
                       mainAxisSpacing: 16,
-                      childAspectRatio: 0.6, // Adjusted for reduced card height
+                      childAspectRatio: 0.52, // Adjusted for taller vertical card
                     ),
                     itemCount: cars.length,
                     itemBuilder: (context, index) {
                       return CarCard(
                         car: cars[index],
-                        style: CarCardStyle.grid,
+                        style: CarCardStyle.available,
                       );
                     },
                   );

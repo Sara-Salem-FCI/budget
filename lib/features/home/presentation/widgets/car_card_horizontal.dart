@@ -17,7 +17,7 @@ class CarCardHorizontal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
+    final l10n = AppLocalizations.of(context)!;
     
     return Container(
       width: width,
@@ -61,7 +61,7 @@ class CarCardHorizontal extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Right Column (Title & Info)
+                  // Title & Info
                   Expanded(
                     flex: 6,
                     child: Column(
@@ -71,15 +71,12 @@ class CarCardHorizontal extends StatelessWidget {
                           car.name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: AppStyles.body2.copyWith(
-                            fontWeight: FontWeight.w900,
-                            fontSize: 16,
-                          ),
+                          style: AppStyles.body2ExtraBold.copyWith(fontSize: 16),
                         ),
                         const SizedBox(height: 4),
                         CarInfoRow(
                           icon: Icons.directions_car_outlined,
-                          label: l10n?.model_year(car.year) ?? 'موديل ${car.year}',
+                          label: l10n.model_year(car.year),
                         ),
                         const SizedBox(height: 2),
                         if (car.location != null)
@@ -90,13 +87,13 @@ class CarCardHorizontal extends StatelessWidget {
                         const SizedBox(height: 2),
                         CarInfoRow(
                           icon: Icons.speed_outlined,
-                          label: l10n?.mileage_km('16,000') ?? '16,000 كم',
+                          label: l10n.mileage_km('16,000'), // Replace with car.mileage when available
                         ),
                       ],
                     ),
                   ),
                   const SizedBox(width: 8),
-                  // Left Column (Price & Button)
+                  // Price & Button
                   Expanded(
                     flex: 4,
                     child: Column(
@@ -104,10 +101,9 @@ class CarCardHorizontal extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '${car.price} ${l10n?.sar ?? 'ر.س'}',
-                          style: AppStyles.body2.copyWith(
+                          '${car.price} ${l10n.sar}',
+                          style: AppStyles.body2ExtraBold.copyWith(
                             color: const Color(0xFF003DAB),
-                            fontWeight: FontWeight.w900,
                             fontSize: 14,
                           ),
                         ),
@@ -127,10 +123,9 @@ class CarCardHorizontal extends StatelessWidget {
                               ),
                             ),
                             child: Text(
-                              l10n?.show_details ?? 'عرض التفاصيل',
-                              style: AppStyles.caption.copyWith(
+                              l10n.show_details,
+                              style: AppStyles.captionBold.copyWith(
                                 fontSize: 11,
-                                fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
                             ),

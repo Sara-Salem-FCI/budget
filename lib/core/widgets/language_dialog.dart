@@ -1,4 +1,5 @@
 import 'package:budget/core/constants/app_styles.dart';
+import 'package:budget/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class LanguageDialog extends StatefulWidget {
@@ -26,9 +27,11 @@ class _LanguageDialogState extends State<LanguageDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-      backgroundColor: Color(0xFFE3EDFF),
+      backgroundColor: const Color(0xFFE3EDFF),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -51,7 +54,7 @@ class _LanguageDialogState extends State<LanguageDialog> {
                   ),
                 ),
                 Text(
-                  'اللغة',
+                  l10n.language,
                   style: AppStyles.heading3.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
@@ -67,12 +70,12 @@ class _LanguageDialogState extends State<LanguageDialog> {
             child: Column(
               children: [
                 _buildLanguageItem(
-                  title: 'العربية',
+                  title: l10n.arabic,
                   flag: '🇸🇦',
                   value: 'ar',
                 ),
                 _buildLanguageItem(
-                  title: 'الانجليزية',
+                  title: l10n.english,
                   flag: '🇺🇸',
                   value: 'en',
                 ),

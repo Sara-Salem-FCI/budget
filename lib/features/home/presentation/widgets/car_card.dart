@@ -3,8 +3,9 @@ import 'package:budget/features/home/data/models/car_model.dart';
 import 'car_card_horizontal.dart';
 import 'car_card_grid.dart';
 import 'car_card_list.dart';
+import 'car_card_available.dart';
 
-enum CarCardStyle { horizontal, grid, list }
+enum CarCardStyle { horizontal, grid, list, available }
 
 class CarCard extends StatelessWidget {
   final CarModel car;
@@ -27,6 +28,8 @@ class CarCard extends StatelessWidget {
         return CarCardGrid(car: car);
       case CarCardStyle.list:
         return CarCardList(car: car);
+      case CarCardStyle.available:
+        return CarCardAvailable(car: car);
     }
   }
 }

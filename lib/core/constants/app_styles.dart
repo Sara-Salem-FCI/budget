@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'app_colors.dart';
+import 'package:budget/core/constants/app_colors.dart';
 
 /// Centralized text styles for the application.
 abstract class AppStyles {
-  /// Large bold heading for onboarding and screen titles.
+  /// Hero style for onboarding titles.
   static TextStyle get heading1 => GoogleFonts.ibmPlexSansArabic(
         fontSize: 24.sp,
         fontWeight: FontWeight.bold,
-        color: Colors.black,
+        color: AppColors.white,
       );
 
+  /// Main titles for headers and sections.
   static TextStyle get heading2 => GoogleFonts.ibmPlexSansArabic(
-        fontSize: 20.sp,
+        fontSize: 18.sp,
         fontWeight: FontWeight.bold,
-        color: Colors.black,
+        color: AppColors.primary,
       );
 
   static TextStyle get heading3 => GoogleFonts.ibmPlexSansArabic(
-        fontSize: 18.sp,
-        fontWeight: FontWeight.w600,
-        color: Colors.black,
+        fontSize: 17.sp,
+        fontWeight: FontWeight.bold,
+        color: AppColors.primary,
       );
 
   /// Standard body text for descriptions and paragraphs.
@@ -53,21 +54,41 @@ abstract class AppStyles {
 
   /// Style for secondary/text buttons.
   static TextStyle get textButton => GoogleFonts.ibmPlexSansArabic(
-        fontSize: 16.sp,
+        fontSize: 14.sp,
         fontWeight: FontWeight.w600,
-        color: AppColors.grey,
+        color: AppColors.primary,
       );
 
-  /// Small caption text for tags or small UI elements.
+  /// Small metadata or caption text.
   static TextStyle get caption => GoogleFonts.ibmPlexSansArabic(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.bold,
+        fontSize: 12.sp,
+        fontWeight: FontWeight.normal,
         color: AppColors.grey,
       );
 
   static TextStyle get captionLight => GoogleFonts.ibmPlexSansArabic(
         fontSize: 12.sp,
         fontWeight: FontWeight.normal,
-        color: AppColors.grey,
+        color: AppColors.white,
+      );
+
+  /// Bold variant of body1.
+  static TextStyle get body1Bold => body1.copyWith(
+        fontWeight: FontWeight.bold,
+        color: AppColors.primary,
+      );
+
+  static TextStyle get body2Bold => body2.copyWith(
+        fontWeight: FontWeight.bold,
+        color: AppColors.primary,
+      );
+
+  static TextStyle get body2ExtraBold => body2.copyWith(
+        fontWeight: FontWeight.w800,
+        color: AppColors.primary,
+      );
+
+  static TextStyle get captionBold => caption.copyWith(
+        fontWeight: FontWeight.bold,
       );
 }
