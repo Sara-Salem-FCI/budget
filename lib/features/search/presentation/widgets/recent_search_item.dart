@@ -1,3 +1,4 @@
+import 'package:budget/core/constants/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class RecentSearchItem extends StatelessWidget {
@@ -17,22 +18,20 @@ class RecentSearchItem extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
         child: Row(
           children: [
+            const Icon(Icons.history, color: Colors.grey, size: 20),
+            const SizedBox(width: 12),
             Expanded(
               child: Text(
                 query,
-                style: const TextStyle(color: Colors.grey, fontSize: 16),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+                style: AppStyles.body1.copyWith(color: Colors.grey),
               ),
             ),
             IconButton(
-              icon: const Icon(Icons.close, size: 18, color: Colors.grey),
               onPressed: onRemove,
-              padding: EdgeInsets.zero,
-              constraints: const BoxConstraints(),
+              icon: const Icon(Icons.close, color: Colors.grey, size: 18),
             ),
           ],
         ),

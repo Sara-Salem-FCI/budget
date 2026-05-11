@@ -1,3 +1,4 @@
+import 'package:budget/core/constants/app_styles.dart';
 import 'package:budget/features/home/data/models/car_model.dart';
 import 'package:budget/features/home/presentation/widgets/car_image_section.dart';
 import 'package:budget/features/home/presentation/widgets/car_info_row.dart';
@@ -16,101 +17,127 @@ class CarCardGrid extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(24), // More rounded as in screenshot
+        borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.03),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start, // Right aligned for RTL
-        children: [
-          CarImageSection(car: car, height: 110, borderRadius: 24),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child: Column(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Top Image Section
+            CarImageSection(
+              car: car, 
+              height: 120, 
+              borderRadius: 24,
+            ),
+            
+            // Content Section with Gradient
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.white,
+                    const Color(0xFFD6E4FF).withValues(alpha: 0.4),
+                  ],
+                ),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    car.name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w900, 
-                      fontSize: 15,
-                      color: Colors.black,
+                  // Right Column (Title & Info)
+                  Expanded(
+                    flex: 6,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          car.name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppStyles.body2.copyWith(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 14,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        CarInfoRow(
+                          icon: Icons.directions_car_outlined,
+                          label: l10n?.model_year(car.year) ?? 'موديل ${car.year}',
+                        ),
+                        const SizedBox(height: 2),
+                        if (car.location != null)
+                          CarInfoRow(
+                            icon: Icons.location_on_outlined,
+                            label: car.location!.split(',').first,
+                          ),
+                        const SizedBox(height: 2),
+                        CarInfoRow(
+                          icon: Icons.speed_outlined,
+                          label: l10n?.mileage_km('16,000') ?? '16,000 كم',
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 2),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${car.price} ${l10n?.sar ?? 'ر.س'}',
-                        style: const TextStyle(
-                          color: Color(0xFF003DAB), // Darker blue from screenshot
-                          fontWeight: FontWeight.w900,
-                          fontSize: 15,
+                  const SizedBox(width: 8),
+                  // Left Column (Price & Button)
+                  Expanded(
+                    flex: 4,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '${car.price} ${l10n?.sar ?? 'ر.س'}',
+                          style: AppStyles.body2.copyWith(
+                            color: const Color(0xFF003DAB),
+                            fontWeight: FontWeight.w900,
+                            fontSize: 13,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 4),
-                      Icon(
-                        Icons.attach_money,
-                        size: 16,
-                        color: Colors.grey.shade400,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 6),
-                  CarInfoRow(
-                    icon: Icons.directions_car,
-                    text: l10n?.model_year(car.year) ?? 'موديل ${car.year}',
-                    alignment: MainAxisAlignment.end,
-                  ),
-                  if (car.location != null)
-                    CarInfoRow(
-                      icon: Icons.location_on,
-                      text: car.location!.split(',').first,
-                      alignment: MainAxisAlignment.end,
-                    ),
-                  CarInfoRow(
-                    icon: Icons.speed,
-                    text: l10n?.mileage_km('16,000') ?? '16,000 كم',
-                    alignment: MainAxisAlignment.end,
-                  ),
-                  const Spacer(),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 42,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFD6E4FF),
-                        foregroundColor: const Color(0xFF003DAB),
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          side: const BorderSide(color: Color(0xFF003DAB), width: 1.5),
+                        const SizedBox(height: 4),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 32,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFF053E94),
+                              foregroundColor: Colors.white,
+                              elevation: 0,
+                              padding: EdgeInsets.zero,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            child: Text(
+                              l10n?.show_details ?? 'عرض التفاصيل',
+                              style: AppStyles.caption.copyWith(
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                      child: Text(
-                        l10n?.show_details ?? 'عرض التفاصيل',
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

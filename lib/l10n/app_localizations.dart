@@ -656,11 +656,17 @@ abstract class AppLocalizations {
   /// **'Favorites'**
   String get favorites;
 
-  /// No description provided for @no_favorites_yet.
+  /// No description provided for @no_favorites_title.
   ///
   /// In en, this message translates to:
   /// **'No cars in favorites yet!'**
-  String get no_favorites_yet;
+  String get no_favorites_title;
+
+  /// No description provided for @no_favorites_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add cars to your favorites to view them later'**
+  String get no_favorites_subtitle;
 
   /// No description provided for @please_login.
   ///
@@ -673,6 +679,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search for your dream car......'**
   String get search_favorites_hint;
+
+  /// No description provided for @notifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notifications;
+
+  /// No description provided for @no_notifications_yet.
+  ///
+  /// In en, this message translates to:
+  /// **'No notifications yet!'**
+  String get no_notifications_yet;
+
+  /// No description provided for @my_page.
+  ///
+  /// In en, this message translates to:
+  /// **'My Page'**
+  String get my_page;
+
+  /// No description provided for @edit_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get edit_profile;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// No description provided for @terms_conditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms and Conditions'**
+  String get terms_conditions;
+
+  /// No description provided for @privacy_policy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacy_policy;
+
+  /// No description provided for @rate_us.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate Us'**
+  String get rate_us;
+
+  /// No description provided for @help.
+  ///
+  /// In en, this message translates to:
+  /// **'Help'**
+  String get help;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// No description provided for @delete_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account'**
+  String get delete_account;
+
+  /// No description provided for @logout_confirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to logout?'**
+  String get logout_confirmation;
+
+  /// No description provided for @yes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get yes;
+
+  /// No description provided for @no.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get no;
 }
 
 class _AppLocalizationsDelegate

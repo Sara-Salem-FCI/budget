@@ -11,6 +11,7 @@ abstract class ApiConstants {
   static const String verifyOtp = 'auth/verify-otp';
   static const String guest = 'auth/guest';
   static const String socialAuth = 'auth/social-auth';
+  static const String logout = 'auth/logout';
 
   // Apple Sign-In Config
   static const String appleClientId = 'com.example.budget.service';
@@ -29,6 +30,7 @@ abstract class ApiConstants {
   static const String userFavCars = 'user-fav-cars';
   static const String suggestCars = 'suggest-cars';
   static const String searchHistory = 'main/search-history';
+  static const String notifications = 'user/notifications';
 }
 
 /// Header keys and values.

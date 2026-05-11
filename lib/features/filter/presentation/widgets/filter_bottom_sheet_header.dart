@@ -1,37 +1,36 @@
+import 'package:budget/core/constants/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:budget/l10n/app_localizations.dart';
 
 class FilterBottomSheetHeader extends StatelessWidget {
-  const FilterBottomSheetHeader({super.key});
+  final VoidCallback onReset;
+
+  const FilterBottomSheetHeader({super.key, required this.onReset});
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-      child: Column(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      child: Stack(
+        alignment: Alignment.center,
         children: [
-          Container(
-            width: 40,
-            height: 4,
-            decoration: BoxDecoration(
-              color: Colors.grey[300],
-              borderRadius: BorderRadius.circular(2),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              l10n.filter,
+              style: AppStyles.heading2,
             ),
           ),
-          const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                l10n.filter,
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: TextButton(
+              onPressed: onReset,
+              child: Text(
+                l10n.reset,
+                style: AppStyles.textButton.copyWith(color: Colors.black),
               ),
-              IconButton(
-                icon: const Icon(Icons.close),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ],
+            ),
           ),
         ],
       ),

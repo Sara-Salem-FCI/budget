@@ -1,3 +1,4 @@
+import 'package:budget/core/constants/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -13,6 +14,7 @@ import 'package:budget/features/filter/presentation/widgets/filter_bottom_sheet.
 import 'package:budget/core/router/app_router.dart';
 import 'package:budget/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -38,75 +40,84 @@ class _SearchPageState extends State<SearchPage> {
       create: (context) => GetIt.instance<SearchCubit>()..loadInitialData(),
       child: Builder(
         builder: (context) {
-          return Scaffold(
-            backgroundColor: AppColors.background,
-            appBar: AppBar(
+          return VisibilityDetector(
+            key: const Key('search_page'),
+            onVisibilityChanged: (info) {
+              if (info.visibleFraction == 1.0) {
+                context.read<SearchCubit>().loadInitialData();
+              }
+            },
+            child: Scaffold(
               backgroundColor: AppColors.background,
-              elevation: 0,
-              title: Text(
-                l10n.nav_search,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+              appBar: AppBar(
+                backgroundColor: AppColors.background,
+                elevation: 0,
+                title: Text(
+                  l10n.nav_search,
+                  style: AppStyles.heading2,
                 ),
+                centerTitle: true,
               ),
-              centerTitle: true,
-            ),
-            body: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 8,
-                  ),
-                  child: CustomSearchBar(
-                    controller: _searchController,
-                    onChanged: (query) {
-                      // Debounce could be added here
-                    },
-                    onSubmitted: (query) {
-                      context.read<SearchCubit>().search(query);
-                    },
-                    onFilterTap: () async {
-                      final filterReq = await FilterBottomSheet.show(context);
-                      if (filterReq != null) {
-                        // Apply the search text from the bar to the filter req if needed
-                        final combinedReq = filterReq.copyWith(
-                          search: _searchController.text.isNotEmpty ? _searchController.text : null,
-                        );
-                        if (context.mounted) {
-                          context.read<SearchCubit>().applyFilter(combinedReq);
+              body: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
+                    ),
+                    child: CustomSearchBar(
+                      controller: _searchController,
+                      onChanged: (query) {
+                        // Debounce could be added here
+                      },
+                      onSubmitted: (query) {
+                        context.read<SearchCubit>().search(query);
+                      },
+                      onFilterTap: () async {
+                        final filterReq = await FilterBottomSheet.show(context);
+                        if (filterReq != null) {
+                          final combinedReq = filterReq.copyWith(
+                            search: _searchController.text.isNotEmpty ? _searchController.text : null,
+                          );
+                          if (context.mounted) {
+                            context.read<SearchCubit>().applyFilter(combinedReq);
+                          }
                         }
-                      }
-                    },
+                      },
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: BlocBuilder<SearchCubit, SearchState>(
-                    builder: (context, state) {
-                      if (state is SearchLoading) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      }
+                  Expanded(
+                    child: BlocBuilder<SearchCubit, SearchState>(
+                      builder: (context, state) {
+                        if (state is SearchLoading) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
 
-                      if (state is SearchError) {
-                        return Center(child: Text(state.message));
-                      }
+                        if (state is SearchError) {
+                          return Center(
+                            child: Text(
+                              state.message,
+                              style: AppStyles.body1,
+                            ),
+                          );
+                        }
 
-                      if (state is SearchSuggestionsLoaded) {
-                        return _buildSuggestions(context, state, l10n);
-                      }
+                        if (state is SearchSuggestionsLoaded) {
+                          return _buildSuggestions(context, state, l10n);
+                        }
 
-                      if (state is SearchResultsLoaded) {
-                        return _buildResults(context, state, l10n);
-                      }
+                        if (state is SearchResultsLoaded) {
+                          return _buildResults(context, state, l10n);
+                        }
 
-                      return const SizedBox.shrink();
-                    },
+                        return const SizedBox.shrink();
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
@@ -123,7 +134,6 @@ class _SearchPageState extends State<SearchPage> {
             child: SectionHeaderWidget(
               title: l10n.recent,
               onMoreTap: () {
-                // Not supported by API yet
               },
             ),
           ),
@@ -156,7 +166,12 @@ class _SearchPageState extends State<SearchPage> {
 
   Widget _buildResults(BuildContext context, SearchResultsLoaded state, AppLocalizations l10n) {
     if (state.results.isEmpty) {
-      return Center(child: Text(l10n.no_results));
+      return Center(
+        child: Text(
+          l10n.no_results,
+          style: AppStyles.body1,
+        ),
+      );
     }
 
     return ListView.builder(

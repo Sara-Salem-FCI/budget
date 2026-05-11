@@ -14,7 +14,10 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this._repository, this._authRepository) : super(HomeInitial());
 
   Future<void> fetchHomeData() async {
-    emit(HomeLoading());
+    // If we already have data, don't show loading indicator
+    if (state is! HomeLoaded) {
+      emit(HomeLoading());
+    }
 
     // Fetch user and home data concurrently
     final results = await Future.wait([
@@ -30,7 +33,11 @@ class HomeCubit extends Cubit<HomeState> {
     final user = results[3] as UserModel?;
 
     activeCarsResult.fold(
-      (failure) => emit(HomeError(failure.message)),
+      (failure) {
+        if (state is! HomeLoaded) {
+          emit(HomeError(failure.message));
+        }
+      },
       (activeCarsRes) {
         final currentOffersRes = currentOffersResult.fold((l) => null, (r) => r);
         final lastSeenRes = lastSeenResult.fold((l) => null, (r) => r);
@@ -48,4 +55,3 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 }
-

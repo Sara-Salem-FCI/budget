@@ -17,4 +17,8 @@ abstract class AppAssets {
   /// Social authentication icons.
   static const String google = '${_basePath}google.svg';
   static const String apple = '${_basePath}apple.svg';
+  
+  /// Empty state images
+  static const String noNotifications = '${_basePath}no_notifications.svg';
+  static const String noFavorites = '${_basePath}no_fav.png';
 }

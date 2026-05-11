@@ -50,25 +50,31 @@ class FilterBottomSheet extends StatelessWidget {
 
             final options = state.options!;
             final req = state.request;
+            final l10n = AppLocalizations.of(context)!;
 
             return Column(
               children: [
-                const FilterBottomSheetHeader(),
+                FilterBottomSheetHeader(
+                  onReset: () => context.read<FilterCubit>().resetFilters(),
+                ),
                 Expanded(
                   child: ListView(
                     controller: scrollController,
                     padding: const EdgeInsets.all(20),
                     children: [
                       ReusableRangeSlider(
-                        title: AppLocalizations.of(context)!.price,
-                        currentMin: req.minPrice,
-                        currentMax: req.maxPrice,
-                        absoluteMin: 0,
-                        absoluteMax: 500000,
-                        unit: AppLocalizations.of(context)!.sar,
-                        minLabel: AppLocalizations.of(context)!.min_limit,
-                        maxLabel: AppLocalizations.of(context)!.max_limit,
-                        onChanged: (min, max) => context.read<FilterCubit>().updatePriceRange(min, max),
+                        title: l10n.price,
+                        values: RangeValues(
+                          (req.minPrice ?? 0).toDouble(),
+                          (req.maxPrice ?? 500000).toDouble(),
+                        ),
+                        min: 0,
+                        max: 500000,
+                        unit: l10n.sar,
+                        onChanged: (values) => context.read<FilterCubit>().updatePriceRange(
+                          values.start.toInt(),
+                          values.end.toInt(),
+                        ),
                       ),
                       const SizedBox(height: 24),
                       const Divider(),
@@ -82,18 +88,23 @@ class FilterBottomSheet extends StatelessWidget {
                       const Divider(),
                       const SizedBox(height: 24),
                       ReusableRangeSlider(
-                        title: AppLocalizations.of(context)!.car_mileage,
-                        currentMin: req.minMileage,
-                        currentMax: req.maxMileage,
-                        absoluteMin: 0,
-                        absoluteMax: 200000,
-                        unit: AppLocalizations.of(context)!.km,
-                        minLabel: AppLocalizations.of(context)!.min_limit,
-                        maxLabel: AppLocalizations.of(context)!.max_limit,
-                        onChanged: (min, max) => context.read<FilterCubit>().updateMileageRange(min, max),
+                        title: l10n.car_mileage,
+                        values: RangeValues(
+                          (req.minMileage ?? 0).toDouble(),
+                          (req.maxMileage ?? 200000).toDouble(),
+                        ),
+                        min: 0,
+                        max: 200000,
+                        unit: l10n.km,
+                        onChanged: (values) => context.read<FilterCubit>().updateMileageRange(
+                          values.start.toInt(),
+                          values.end.toInt(),
+                        ),
                       ),
                       const SizedBox(height: 32),
-                      FilterBottomSheetFooter(state: state),
+                      FilterBottomSheetFooter(
+                        onApply: () => Navigator.pop(context, state.request),
+                      ),
                       const SizedBox(height: 80),
                     ],
                   ),
@@ -105,6 +116,4 @@ class FilterBottomSheet extends StatelessWidget {
       },
     );
   }
-
-
 }

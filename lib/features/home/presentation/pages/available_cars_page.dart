@@ -1,4 +1,5 @@
 import 'package:budget/core/constants/app_colors.dart';
+import 'package:budget/core/constants/app_styles.dart';
 import 'package:budget/features/filter/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:budget/features/home/presentation/widgets/car_card.dart';
 import 'package:budget/features/home/presentation/widgets/custom_search_bar.dart';
@@ -39,7 +40,7 @@ class _AvailableCarsPageState extends State<AvailableCarsPage> {
           centerTitle: true,
           title: Text(
             l10n.available_cars,
-            style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            style: AppStyles.heading2,
           ),
           leading: IconButton(
             icon: const Icon(Icons.arrow_back, color: Colors.black),
@@ -76,7 +77,12 @@ class _AvailableCarsPageState extends State<AvailableCarsPage> {
                   }
 
                   if (state is SearchError) {
-                    return Center(child: Text(state.message));
+                    return Center(
+                      child: Text(
+                        state.message,
+                        style: AppStyles.body1,
+                      ),
+                    );
                   }
 
                   List<dynamic> cars = [];
@@ -87,7 +93,12 @@ class _AvailableCarsPageState extends State<AvailableCarsPage> {
                   }
 
                   if (cars.isEmpty) {
-                    return Center(child: Text(l10n.no_results));
+                    return Center(
+                      child: Text(
+                        l10n.no_results,
+                        style: AppStyles.body1,
+                      ),
+                    );
                   }
 
                   return GridView.builder(

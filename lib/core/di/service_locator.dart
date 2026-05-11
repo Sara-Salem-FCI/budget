@@ -23,6 +23,11 @@ import 'package:budget/features/home/data/repositories/home_repository.dart';
 
 import 'package:budget/features/home/presentation/cubit/home_cubit.dart';
 import 'package:budget/features/search/presentation/cubit/search_cubit.dart';
+import 'package:budget/features/profile/presentation/cubit/profile_cubit.dart';
+
+import 'package:budget/features/notifications/data/datasources/notification_remote_data_source.dart';
+import 'package:budget/features/notifications/data/repositories/notification_repository_impl.dart';
+import 'package:budget/features/notifications/presentation/cubit/notifications_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -54,6 +59,9 @@ Future<void> setupServiceLocator() async {
   getIt.registerLazySingleton<FavoritesRemoteDataSource>(
     () => FavoritesRemoteDataSourceImpl(getIt()),
   );
+  getIt.registerLazySingleton<NotificationRemoteDataSource>(
+    () => NotificationRemoteDataSourceImpl(getIt()),
+  );
 
   // Repositories
   getIt.registerLazySingleton<AuthRepository>(
@@ -68,6 +76,9 @@ Future<void> setupServiceLocator() async {
   getIt.registerLazySingleton<FavoritesRepository>(
     () => FavoritesRepositoryImpl(getIt()),
   );
+  getIt.registerLazySingleton<NotificationRepository>(
+    () => NotificationRepositoryImpl(getIt()),
+  );
 
   // Cubits
   getIt.registerLazySingleton(() => RegisterCubit(getIt()));
@@ -77,4 +88,6 @@ Future<void> setupServiceLocator() async {
   getIt.registerFactory(() => SearchCubit(getIt(), getIt()));
   getIt.registerFactory(() => FilterCubit(getIt()));
   getIt.registerFactory(() => FavoritesCubit(getIt()));
+  getIt.registerFactory(() => NotificationsCubit(getIt()));
+  getIt.registerFactory(() => ProfileCubit(getIt()));
 }

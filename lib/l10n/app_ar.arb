@@ -95,7 +95,7 @@
   "nav_home": "الرئيسية",
   "nav_search": "البحث",
   "nav_favorites": "المفضلة",
-  "nav_profile": "حسابي",
+  "nav_profile": "صفحتي",
   "must_agree_to_terms": "يجب الموافقة على الشروط والأحكام",
   "discount_label": "خصم {percentage}%",
   "@discount_label": {
@@ -121,7 +121,22 @@
   "reset": "إعادة ضبط",
   "apply": "تطبيق",
   "favorites": "المفضلة",
-  "no_favorites_yet": "لا يوجد عربيات في المفضلة حتى الان !",
+  "no_favorites_title": "لا يوجد سيارات في المفضلة بعد!",
+  "no_favorites_subtitle": "أضف سيارات إلى المفضلة لعرضها لاحقاً",
   "please_login": "يرجى تسجيل الدخول للمتابعة",
-  "search_favorites_hint": "ابحث عن سيارة احلامك......"
+  "search_favorites_hint": "ابحث عن سيارة احلامك......",
+  "notifications": "الاشعارات",
+  "no_notifications_yet": "لا يوجد اشعارات حتي الان !",
+  "my_page": "صفحتي",
+  "edit_profile": "تعديل الصفحة الشخصية",
+  "language": "اللغة",
+  "terms_conditions": "الشروط و الاحكام",
+  "privacy_policy": "سياسة الخصوصية",
+  "rate_us": "قيمنا",
+  "help": "للساعد",
+  "logout": "تسجيل الخروج",
+  "delete_account": "حذف الحساب",
+  "logout_confirmation": "هل انت متاكد انك تريد تسجيل الخروج بالفعل ؟",
+  "yes": "نعم",
+  "no": "لا"
 }

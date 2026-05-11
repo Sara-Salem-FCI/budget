@@ -10,7 +10,7 @@ class AvailableCarsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverPadding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       sliver: SliverList(
         delegate: SliverChildBuilderDelegate(
           (context, index) {

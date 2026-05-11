@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:budget/core/constants/app_styles.dart';
 import 'package:budget/l10n/app_localizations.dart';
 
 class CustomSearchBar extends StatelessWidget {
@@ -37,7 +37,10 @@ class CustomSearchBar extends StatelessWidget {
         onSubmitted: onSubmitted,
         decoration: InputDecoration(
           hintText: l10n.search_hint,
-          hintStyle: const TextStyle(color: Colors.grey, fontSize: 13),
+          hintStyle: AppStyles.bodySmall.copyWith(
+            color: Colors.grey,
+            fontSize: 13,
+          ),
           prefixIcon: const Icon(Icons.search, color: Colors.grey, size: 20),
           suffixIcon: Container(
             margin: const EdgeInsets.all(8),

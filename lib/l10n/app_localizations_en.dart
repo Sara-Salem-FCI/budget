@@ -304,11 +304,57 @@ class AppLocalizationsEn extends AppLocalizations {
   String get favorites => 'Favorites';
 
   @override
-  String get no_favorites_yet => 'No cars in favorites yet!';
+  String get no_favorites_title => 'No cars in favorites yet!';
+
+  @override
+  String get no_favorites_subtitle =>
+      'Add cars to your favorites to view them later';
 
   @override
   String get please_login => 'Please login to continue';
 
   @override
   String get search_favorites_hint => 'Search for your dream car......';
+
+  @override
+  String get notifications => 'Notifications';
+
+  @override
+  String get no_notifications_yet => 'No notifications yet!';
+
+  @override
+  String get my_page => 'My Page';
+
+  @override
+  String get edit_profile => 'Edit Profile';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get terms_conditions => 'Terms and Conditions';
+
+  @override
+  String get privacy_policy => 'Privacy Policy';
+
+  @override
+  String get rate_us => 'Rate Us';
+
+  @override
+  String get help => 'Help';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get delete_account => 'Delete Account';
+
+  @override
+  String get logout_confirmation => 'Are you sure you want to logout?';
+
+  @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
 }

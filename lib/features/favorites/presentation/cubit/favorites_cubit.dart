@@ -13,20 +13,34 @@ class FavoritesCubit extends Cubit<FavoritesState> {
   Future<void> loadFavorites({bool refresh = false}) async {
     if (refresh) {
       _currentPage = 1;
-      _allFavorites = [];
+      // Note: We don't clear _allFavorites here yet to keep the old data visible
+      // during the refresh, matching the "update directly" requirement.
     }
 
-    if (_currentPage == 1) {
+    // Only show loading indicator if we don't have any data yet
+    if (_allFavorites.isEmpty) {
       emit(FavoritesLoading());
     }
 
     final result = await _repository.getFavorites(page: _currentPage);
 
     result.fold(
-      (failure) => emit(FavoritesError(failure.message)),
+      (failure) {
+        if (_allFavorites.isEmpty) {
+          emit(FavoritesError(failure.message));
+        }
+        // If we already have data, we just stay in Loaded state 
+        // maybe show a toast or silent error.
+      },
       (response) {
-        _allFavorites.addAll(response.cars);
-        _currentPage++;
+        if (refresh) {
+          _allFavorites = response.cars;
+        } else {
+          _allFavorites.addAll(response.cars);
+        }
+        
+        _currentPage = refresh ? 2 : _currentPage + 1;
+        
         emit(FavoritesLoaded(
           favorites: List.from(_allFavorites),
           hasReachedMax: response.pagination.currentPage >= response.pagination.lastPage,
@@ -36,11 +50,11 @@ class FavoritesCubit extends Cubit<FavoritesState> {
   }
 
   void filterFavorites(String query) {
-    if (state is FavoritesLoaded) {
+    if (state is FavoritesLoaded || state is FavoritesInitial) {
       if (query.isEmpty) {
         emit(FavoritesLoaded(
           favorites: List.from(_allFavorites),
-          hasReachedMax: true, // Simplified for local filtering
+          hasReachedMax: true, 
         ));
         return;
       }
@@ -58,9 +72,9 @@ class FavoritesCubit extends Cubit<FavoritesState> {
   }
 
   Future<void> toggleFavorite(CarModel car) async {
-    // Optimistic Update
     final bool isRemoving = car.isFav;
     
+    // Optimistic UI update
     if (state is FavoritesLoaded) {
       final currentState = state as FavoritesLoaded;
       List<CarModel> updatedList = List.from(currentState.favorites);
@@ -69,7 +83,6 @@ class FavoritesCubit extends Cubit<FavoritesState> {
         updatedList.removeWhere((item) => item.id == car.id);
         _allFavorites.removeWhere((item) => item.id == car.id);
       } else {
-        // Adding to favorites
         final addedCar = car.copyWith(isFav: true);
         if (!updatedList.any((e) => e.id == car.id)) {
           updatedList.insert(0, addedCar);
@@ -81,19 +94,14 @@ class FavoritesCubit extends Cubit<FavoritesState> {
         favorites: updatedList,
         hasReachedMax: currentState.hasReachedMax,
       ));
-    } else {
-      // If state is not loaded, we clear cache to force a fresh fetch next time
-      _currentPage = 1;
-      _allFavorites = [];
     }
 
     final result = await _repository.toggleFavorite(car.id);
 
     result.fold(
       (failure) {
-        // Rollback or show error
         emit(FavoriteToggleActionState(success: false, message: failure.message, carId: car.id));
-        // If we were on favorites page and removed it, we might want to reload to be sure
+        // Force refresh on failure to ensure UI consistency
         loadFavorites(refresh: true);
       },
       (success) {

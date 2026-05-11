@@ -14,6 +14,7 @@ abstract class AuthRemoteDataSource {
   Future<Map<String, dynamic>> verifyOtp(Map<String, dynamic> data);
   Future<UserModel> guestLogin(String fcmToken);
   Future<UserModel> socialAuth(String uid, String fcmToken);
+  Future<void> logout();
 }
 
 /// Implementation of [AuthRemoteDataSource] using Dio.
@@ -88,5 +89,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     final userData = response.data['data']['user'];
     final token = response.data['data']['token'];
     return UserModel.fromJson(userData).copyWith(token: token);
+  }
+
+  @override
+  Future<void> logout() async {
+    await _dio.post(ApiConstants.logout);
   }
 }

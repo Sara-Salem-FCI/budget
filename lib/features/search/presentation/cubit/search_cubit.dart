@@ -14,18 +14,28 @@ class SearchCubit extends Cubit<SearchState> {
   SearchCubit(this._homeRepository, this._filterRepository) : super(SearchInitial());
 
   void loadInitialData() async {
-    emit(SearchLoading());
+    // Only show loading if we are in initial state or have no suggestions
+    if (state is SearchInitial || state is SearchError) {
+      emit(SearchLoading());
+    }
     
-    // Fetch suggested cars and search history in parallel or sequence
     final historyResult = await _filterRepository.getSearchHistory();
     final suggestionsResult = await _homeRepository.getSuggestedCars();
 
     historyResult.fold(
-      (failure) => emit(SearchError(failure.message)),
+      (failure) {
+        if (state is! SearchSuggestionsLoaded) {
+          emit(SearchError(failure.message));
+        }
+      },
       (historyResponse) {
         _recentSearches = historyResponse.searchHistory;
         suggestionsResult.fold(
-          (failure) => emit(SearchError(failure.message)),
+          (failure) {
+            if (state is! SearchSuggestionsLoaded) {
+              emit(SearchError(failure.message));
+            }
+          },
           (suggestionsResponse) => emit(SearchSuggestionsLoaded(
             recentSearches: List.from(_recentSearches),
             suggestedCars: suggestionsResponse.cars,
@@ -47,7 +57,6 @@ class SearchCubit extends Cubit<SearchState> {
     result.fold(
       (failure) => emit(SearchError(failure.message)),
       (response) async {
-        // Refresh history after search (assuming server saves it)
         await _refreshHistory();
         emit(SearchResultsLoaded(
           results: response.cars,
@@ -64,7 +73,6 @@ class SearchCubit extends Cubit<SearchState> {
     result.fold(
       (failure) => emit(SearchError(failure.message)),
       (response) async {
-        // Refresh history after search (assuming server saves it)
         await _refreshHistory();
         emit(SearchResultsLoaded(
           results: response.cars,
@@ -88,7 +96,6 @@ class SearchCubit extends Cubit<SearchState> {
   }
 
   void removeRecentSearch(int id) async {
-    // Optimistic UI update or just wait for API
     final result = await _filterRepository.deleteSearchHistory(id);
     result.fold(
       (failure) => emit(SearchError(failure.message)),
@@ -102,7 +109,7 @@ class SearchCubit extends Cubit<SearchState> {
   Future<void> _refreshHistory() async {
     final result = await _filterRepository.getSearchHistory();
     result.fold(
-      (_) => null, // Ignore error for background refresh
+      (_) => null,
       (response) => _recentSearches = response.searchHistory,
     );
   }

@@ -14,6 +14,7 @@ import 'package:budget/features/search/presentation/pages/search_page.dart';
 import 'package:budget/features/favorites/presentation/pages/favorites_page.dart';
 import 'package:budget/features/profile/presentation/pages/profile_page.dart';
 import 'package:budget/features/home/presentation/pages/available_cars_page.dart';
+import 'package:budget/features/notifications/presentation/pages/notifications_page.dart';
 
 /// Centralized router configuration for the application.
 abstract class AppRouter {
@@ -30,10 +31,15 @@ abstract class AppRouter {
   static const String favorites = '/favorites';
   static const String profile = '/profile';
   static const String availableCars = '/available-cars';
+  static const String notifications = '/notifications';
 
   static final router = GoRouter(
     initialLocation: splash,
     routes: [
+      GoRoute(
+        path: notifications,
+        builder: (context, state) => const NotificationsPage(),
+      ),
       GoRoute(
         path: availableCars,
         builder: (context, state) => const AvailableCarsPage(),

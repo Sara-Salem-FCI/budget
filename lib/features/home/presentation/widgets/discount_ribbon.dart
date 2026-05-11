@@ -1,35 +1,39 @@
+import 'package:budget/core/constants/app_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:budget/core/constants/app_colors.dart';
-
-import 'package:budget/l10n/app_localizations.dart';
+import 'dart:math' as math;
 
 class DiscountRibbon extends StatelessWidget {
-  final int discountPercentage;
+  final String label;
 
-  const DiscountRibbon({
-    super.key,
-    required this.discountPercentage,
-  });
+  const DiscountRibbon({super.key, required this.label});
 
   @override
   Widget build(BuildContext context) {
-    if (discountPercentage <= 0) return const SizedBox.shrink();
-    final l10n = AppLocalizations.of(context)!;
-
     return Positioned(
-      top: 10,
+      top: 15,
       right: -30,
       child: Transform.rotate(
-        angle: 0.785398, // 45 degrees in radians
+        angle: math.pi / 4,
         child: Container(
-          color: AppColors.primary,
-          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 4),
+          width: 120,
+          padding: const EdgeInsets.symmetric(vertical: 4),
+          decoration: const BoxDecoration(
+            color: Color(0xFF053E94),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 4,
+                offset: Offset(0, 2),
+              ),
+            ],
+          ),
           child: Text(
-            l10n.discount_label(discountPercentage),
-            style: const TextStyle(
+            label,
+            textAlign: TextAlign.center,
+            style: AppStyles.captionLight.copyWith(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontSize: 12,
+              fontSize: 11,
             ),
           ),
         ),

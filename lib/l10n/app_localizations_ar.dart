@@ -242,7 +242,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get nav_favorites => 'المفضلة';
 
   @override
-  String get nav_profile => 'حسابي';
+  String get nav_profile => 'صفحتي';
 
   @override
   String get must_agree_to_terms => 'يجب الموافقة على الشروط والأحكام';
@@ -301,11 +301,57 @@ class AppLocalizationsAr extends AppLocalizations {
   String get favorites => 'المفضلة';
 
   @override
-  String get no_favorites_yet => 'لا يوجد عربيات في المفضلة حتى الان !';
+  String get no_favorites_title => 'لا يوجد سيارات في المفضلة بعد!';
+
+  @override
+  String get no_favorites_subtitle => 'أضف سيارات إلى المفضلة لعرضها لاحقاً';
 
   @override
   String get please_login => 'يرجى تسجيل الدخول للمتابعة';
 
   @override
   String get search_favorites_hint => 'ابحث عن سيارة احلامك......';
+
+  @override
+  String get notifications => 'الاشعارات';
+
+  @override
+  String get no_notifications_yet => 'لا يوجد اشعارات حتي الان !';
+
+  @override
+  String get my_page => 'صفحتي';
+
+  @override
+  String get edit_profile => 'تعديل الصفحة الشخصية';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get terms_conditions => 'الشروط و الاحكام';
+
+  @override
+  String get privacy_policy => 'سياسة الخصوصية';
+
+  @override
+  String get rate_us => 'قيمنا';
+
+  @override
+  String get help => 'للساعد';
+
+  @override
+  String get logout => 'تسجيل الخروج';
+
+  @override
+  String get delete_account => 'حذف الحساب';
+
+  @override
+  String get logout_confirmation =>
+      'هل انت متاكد انك تريد تسجيل الخروج بالفعل ؟';
+
+  @override
+  String get yes => 'نعم';
+
+  @override
+  String get no => 'لا';
 }

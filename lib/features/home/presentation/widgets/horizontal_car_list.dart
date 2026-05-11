@@ -10,7 +10,7 @@ class HorizontalCarList extends StatelessWidget {
   const HorizontalCarList({
     super.key,
     required this.cars,
-    this.height = 280,
+    this.height = 248, // Reduced height to remove unused bottom space
     this.itemWidth = 280,
   });
 

@@ -4,6 +4,9 @@ import 'package:budget/core/constants/app_styles.dart';
 import 'package:budget/l10n/app_localizations.dart';
 import 'package:budget/features/auth/data/models/user_model.dart';
 
+import 'package:budget/core/router/app_router.dart';
+import 'package:go_router/go_router.dart';
+
 class HomeHeader extends StatelessWidget {
   final UserModel? user;
 
@@ -38,10 +41,7 @@ class HomeHeader extends StatelessWidget {
                 ),
                 Text(
                   l10n.home_subtitle,
-                  style: AppStyles.body1.copyWith(
-                    color: Colors.grey,
-                    fontSize: 14,
-                  ),
+                  style: AppStyles.bodySmall,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -51,7 +51,7 @@ class HomeHeader extends StatelessWidget {
           const Spacer(),
           IconButton(
             icon: const Icon(Icons.notifications_none, size: 28),
-            onPressed: () {},
+            onPressed: () => context.push(AppRouter.notifications),
           ),
         ],
       ),

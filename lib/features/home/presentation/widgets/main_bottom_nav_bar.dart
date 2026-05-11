@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:budget/core/constants/app_colors.dart';
+import 'package:budget/core/constants/app_styles.dart';
 import 'package:budget/l10n/app_localizations.dart';
 
 class MainBottomNavBar extends StatelessWidget {
@@ -114,9 +115,8 @@ class _BottomNavItem extends StatelessWidget {
               const SizedBox(width: 8),
               Text(
                 label,
-                style: const TextStyle(
+                style: AppStyles.caption.copyWith(
                   color: Colors.white,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],

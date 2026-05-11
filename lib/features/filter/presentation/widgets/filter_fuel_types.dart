@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:budget/core/constants/app_styles.dart';
 import 'package:budget/features/filter/data/models/filter_options_model.dart';
 import 'package:budget/features/filter/presentation/cubit/filter_cubit.dart';
 import 'package:budget/l10n/app_localizations.dart';
@@ -21,7 +22,7 @@ class FilterFuelTypes extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(l10n.fuel_type, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+        Text(l10n.fuel_type, style: AppStyles.heading3),
         const SizedBox(height: 16),
         Wrap(
           spacing: 8,

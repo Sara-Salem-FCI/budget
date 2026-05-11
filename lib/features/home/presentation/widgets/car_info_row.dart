@@ -1,42 +1,30 @@
+import 'package:budget/core/constants/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class CarInfoRow extends StatelessWidget {
   final IconData icon;
-  final String text;
-  final MainAxisAlignment alignment;
+  final String label;
 
-  const CarInfoRow({
-    super.key,
-    required this.icon,
-    required this.text,
-    this.alignment = MainAxisAlignment.start,
-  });
+  const CarInfoRow({super.key, required this.icon, required this.label});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 4),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.end, // Updated to end for this specific requirement
-        children: [
-          Icon(icon, size: 16, color: Colors.grey.shade400),
-          const SizedBox(width: 8),
-          Flexible(
-            child: Text(
-              text,
-              style: TextStyle(
-                color: Colors.grey.shade500, 
-                fontSize: 13,
-                fontWeight: FontWeight.w500,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.end,
-            ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(
+          icon,
+          size: 14,
+          color: Colors.grey.shade400,
+        ),
+        const SizedBox(width: 4),
+        Text(
+          label,
+          style: AppStyles.captionLight.copyWith(
+            color: Colors.grey.shade600,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

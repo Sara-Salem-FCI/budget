@@ -125,6 +125,11 @@ class AuthRepositoryImpl with RepoErrorHandler implements AuthRepository {
 
   @override
   Future<void> logout() async {
+    try {
+      await _remoteDataSource.logout();
+    } catch (_) {
+      // Even if remote logout fails, we clear local session
+    }
     await _localDataSource.deleteToken();
   }
 
