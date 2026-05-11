@@ -28,7 +28,7 @@ class _LanguageDialogState extends State<LanguageDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFE3EDFF),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -117,17 +117,16 @@ class _LanguageDialogState extends State<LanguageDialog> {
               },
               activeColor: const Color(0xFF4CAF50),
             ),
-            const Spacer(),
+            Text(
+              flag,
+              style: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(width: 5),
             Text(
               title,
               style: AppStyles.body1.copyWith(
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
               ),
-            ),
-            const SizedBox(width: 12),
-            Text(
-              flag,
-              style: const TextStyle(fontSize: 24),
             ),
           ],
         ),

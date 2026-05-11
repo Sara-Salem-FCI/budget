@@ -28,6 +28,7 @@ import 'package:budget/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:budget/features/notifications/data/datasources/notification_remote_data_source.dart';
 import 'package:budget/features/notifications/data/repositories/notification_repository_impl.dart';
 import 'package:budget/features/notifications/presentation/cubit/notifications_cubit.dart';
+import 'package:budget/core/cubit/locale_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -90,4 +91,5 @@ Future<void> setupServiceLocator() async {
   getIt.registerFactory(() => FavoritesCubit(getIt()));
   getIt.registerFactory(() => NotificationsCubit(getIt()));
   getIt.registerFactory(() => ProfileCubit(getIt()));
+  getIt.registerLazySingleton(() => LocaleCubit(getIt()));
 }

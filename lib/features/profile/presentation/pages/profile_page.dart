@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:budget/core/widgets/confirmation_dialog.dart';
 import 'package:budget/core/widgets/language_dialog.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:budget/core/cubit/locale_cubit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -118,11 +119,11 @@ class ProfilePage extends StatelessWidget {
                         ),
                         ProfileMenuTile(
                           title: l10n.terms_conditions,
-                          onTap: () {},
+                          onTap: () => context.push(AppRouter.termsAndConditions),
                         ),
                         ProfileMenuTile(
                           title: l10n.privacy_policy,
-                          onTap: () {},
+                          onTap: () => context.push(AppRouter.privacyPolicy),
                         ),
                         ProfileMenuTile(
                           title: l10n.rate_us,
@@ -200,6 +201,7 @@ class ProfilePage extends StatelessWidget {
       builder: (dialogContext) => LanguageDialog(
         currentLocale: currentLocale,
         onLanguageSelected: (localeCode) {
+          context.read<LocaleCubit>().changeLanguage(localeCode);
         },
       ),
     );

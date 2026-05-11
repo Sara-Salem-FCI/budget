@@ -16,6 +16,10 @@ import 'package:budget/features/profile/presentation/pages/profile_page.dart';
 import 'package:budget/features/home/presentation/pages/available_cars_page.dart';
 import 'package:budget/features/notifications/presentation/pages/notifications_page.dart';
 
+import 'package:budget/features/profile/presentation/pages/terms_and_conditions_page.dart';
+
+import 'package:budget/features/profile/presentation/pages/privacy_policy_page.dart';
+
 /// Centralized router configuration for the application.
 abstract class AppRouter {
   static const String splash = '/';
@@ -32,10 +36,20 @@ abstract class AppRouter {
   static const String profile = '/profile';
   static const String availableCars = '/available-cars';
   static const String notifications = '/notifications';
+  static const String termsAndConditions = '/terms-conditions';
+  static const String privacyPolicy = '/privacy-policy';
 
   static final router = GoRouter(
     initialLocation: splash,
     routes: [
+      GoRoute(
+        path: privacyPolicy,
+        builder: (context, state) => const PrivacyPolicyPage(),
+      ),
+      GoRoute(
+        path: termsAndConditions,
+        builder: (context, state) => const TermsAndConditionsPage(),
+      ),
       GoRoute(
         path: notifications,
         builder: (context, state) => const NotificationsPage(),
