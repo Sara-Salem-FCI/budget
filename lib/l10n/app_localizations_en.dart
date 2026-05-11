@@ -254,4 +254,61 @@ class AppLocalizationsEn extends AppLocalizations {
   String discount_label(int percentage) {
     return '$percentage% OFF';
   }
+
+  @override
+  String get clear_all => 'Clear All';
+
+  @override
+  String get recent => 'Recent';
+
+  @override
+  String get suggested_cars => 'Suggested cars for you';
+
+  @override
+  String get no_results => 'No results found';
+
+  @override
+  String get filter => 'Filter';
+
+  @override
+  String get price => 'Price';
+
+  @override
+  String get min_limit => 'Min';
+
+  @override
+  String get max_limit => 'Max';
+
+  @override
+  String get car_mileage => 'Mileage';
+
+  @override
+  String get km => 'km';
+
+  @override
+  String get sar => 'SAR';
+
+  @override
+  String get brand => 'Brand';
+
+  @override
+  String get fuel_type => 'Fuel Type';
+
+  @override
+  String get reset => 'Reset';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get favorites => 'Favorites';
+
+  @override
+  String get no_favorites_yet => 'No cars in favorites yet!';
+
+  @override
+  String get please_login => 'Please login to continue';
+
+  @override
+  String get search_favorites_hint => 'Search for your dream car......';
 }

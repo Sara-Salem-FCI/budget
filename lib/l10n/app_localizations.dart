@@ -559,6 +559,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{percentage}% OFF'**
   String discount_label(int percentage);
+
+  /// No description provided for @clear_all.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear All'**
+  String get clear_all;
+
+  /// No description provided for @recent.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent'**
+  String get recent;
+
+  /// No description provided for @suggested_cars.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggested cars for you'**
+  String get suggested_cars;
+
+  /// No description provided for @no_results.
+  ///
+  /// In en, this message translates to:
+  /// **'No results found'**
+  String get no_results;
+
+  /// No description provided for @filter.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter'**
+  String get filter;
+
+  /// No description provided for @price.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get price;
+
+  /// No description provided for @min_limit.
+  ///
+  /// In en, this message translates to:
+  /// **'Min'**
+  String get min_limit;
+
+  /// No description provided for @max_limit.
+  ///
+  /// In en, this message translates to:
+  /// **'Max'**
+  String get max_limit;
+
+  /// No description provided for @car_mileage.
+  ///
+  /// In en, this message translates to:
+  /// **'Mileage'**
+  String get car_mileage;
+
+  /// No description provided for @km.
+  ///
+  /// In en, this message translates to:
+  /// **'km'**
+  String get km;
+
+  /// No description provided for @sar.
+  ///
+  /// In en, this message translates to:
+  /// **'SAR'**
+  String get sar;
+
+  /// No description provided for @brand.
+  ///
+  /// In en, this message translates to:
+  /// **'Brand'**
+  String get brand;
+
+  /// No description provided for @fuel_type.
+  ///
+  /// In en, this message translates to:
+  /// **'Fuel Type'**
+  String get fuel_type;
+
+  /// No description provided for @reset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get reset;
+
+  /// No description provided for @apply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get apply;
+
+  /// No description provided for @favorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get favorites;
+
+  /// No description provided for @no_favorites_yet.
+  ///
+  /// In en, this message translates to:
+  /// **'No cars in favorites yet!'**
+  String get no_favorites_yet;
+
+  /// No description provided for @please_login.
+  ///
+  /// In en, this message translates to:
+  /// **'Please login to continue'**
+  String get please_login;
+
+  /// No description provided for @search_favorites_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for your dream car......'**
+  String get search_favorites_hint;
 }
 
 class _AppLocalizationsDelegate

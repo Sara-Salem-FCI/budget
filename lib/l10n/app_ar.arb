@@ -104,5 +104,24 @@
         "type": "int"
       }
     }
-  }
+  },
+  "clear_all": "مسح الكل",
+  "recent": "مؤخرًا",
+  "suggested_cars": "سيارات مقترحة لك",
+  "no_results": "لا توجد نتائج",
+  "filter": "فلتر",
+  "price": "السعر",
+  "min_limit": "الحد الأدنى",
+  "max_limit": "الحد الأقصى",
+  "car_mileage": "ممشى السيارة",
+  "km": "كم",
+  "sar": "ر.س",
+  "brand": "الماركة",
+  "fuel_type": "نوع الوقود",
+  "reset": "إعادة ضبط",
+  "apply": "تطبيق",
+  "favorites": "المفضلة",
+  "no_favorites_yet": "لا يوجد عربيات في المفضلة حتى الان !",
+  "please_login": "يرجى تسجيل الدخول للمتابعة",
+  "search_favorites_hint": "ابحث عن سيارة احلامك......"
 }

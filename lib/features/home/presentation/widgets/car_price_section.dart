@@ -15,11 +15,12 @@ class CarPriceSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Text(
-          '${car.price} ر.س',
+          '${car.price} ${l10n?.sar ?? 'ر.س'}',
           style: const TextStyle(
             color: AppColors.primary,
             fontWeight: FontWeight.bold,

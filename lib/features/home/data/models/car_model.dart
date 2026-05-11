@@ -69,6 +69,34 @@ class CarModel extends Equatable {
     'created_at': createdAt,
   };
 
+  CarModel copyWith({
+    int? id,
+    String? carImage,
+    String? name,
+    String? brand,
+    int? year,
+    String? price,
+    String? location,
+    int? discount,
+    bool? hasDiscount,
+    bool? isFav,
+    String? createdAt,
+  }) {
+    return CarModel(
+      id: id ?? this.id,
+      carImage: carImage ?? this.carImage,
+      name: name ?? this.name,
+      brand: brand ?? this.brand,
+      year: year ?? this.year,
+      price: price ?? this.price,
+      location: location ?? this.location,
+      discount: discount ?? this.discount,
+      hasDiscount: hasDiscount ?? this.hasDiscount,
+      isFav: isFav ?? this.isFav,
+      createdAt: createdAt ?? this.createdAt,
+    );
+  }
+
   @override
   List<Object?> get props => [
         id,

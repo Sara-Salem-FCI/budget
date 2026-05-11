@@ -251,4 +251,61 @@ class AppLocalizationsAr extends AppLocalizations {
   String discount_label(int percentage) {
     return 'خصم $percentage%';
   }
+
+  @override
+  String get clear_all => 'مسح الكل';
+
+  @override
+  String get recent => 'مؤخرًا';
+
+  @override
+  String get suggested_cars => 'سيارات مقترحة لك';
+
+  @override
+  String get no_results => 'لا توجد نتائج';
+
+  @override
+  String get filter => 'فلتر';
+
+  @override
+  String get price => 'السعر';
+
+  @override
+  String get min_limit => 'الحد الأدنى';
+
+  @override
+  String get max_limit => 'الحد الأقصى';
+
+  @override
+  String get car_mileage => 'ممشى السيارة';
+
+  @override
+  String get km => 'كم';
+
+  @override
+  String get sar => 'ر.س';
+
+  @override
+  String get brand => 'الماركة';
+
+  @override
+  String get fuel_type => 'نوع الوقود';
+
+  @override
+  String get reset => 'إعادة ضبط';
+
+  @override
+  String get apply => 'تطبيق';
+
+  @override
+  String get favorites => 'المفضلة';
+
+  @override
+  String get no_favorites_yet => 'لا يوجد عربيات في المفضلة حتى الان !';
+
+  @override
+  String get please_login => 'يرجى تسجيل الدخول للمتابعة';
+
+  @override
+  String get search_favorites_hint => 'ابحث عن سيارة احلامك......';
 }

@@ -20,6 +20,15 @@ abstract class ApiConstants {
   static const String activeCars = 'main/active-cars';
   static const String currentOffers = 'main/current-offers';
   static const String lastSeen = 'main/last-seen';
+  static const String searchCars = 'main/search';
+  
+  // Filter Endpoints
+  static const String filterOptions = 'main/filter-options';
+  static const String filter = 'main/filter';
+  static const String filterBrand = 'main/filter-brand/';
+  static const String userFavCars = 'user-fav-cars';
+  static const String suggestCars = 'suggest-cars';
+  static const String searchHistory = 'main/search-history';
 }
 
 /// Header keys and values.

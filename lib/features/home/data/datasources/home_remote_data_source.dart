@@ -7,6 +7,8 @@ abstract class HomeRemoteDataSource {
   Future<CarResponseModel> getActiveCars({int page = 1});
   Future<CarResponseModel> getCurrentOffers({int page = 1});
   Future<CarResponseModel> getLastSeen({int page = 1});
+  Future<CarResponseModel> searchCars({required String query, int page = 1});
+  Future<CarResponseModel> getSuggestedCars({int page = 1});
 }
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
@@ -36,6 +38,27 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   Future<CarResponseModel> getLastSeen({int page = 1}) async {
     final response = await _dio.get(
       ApiConstants.lastSeen,
+      queryParameters: {'page': page},
+    );
+    return CarResponseModel.fromJson(response.data);
+  }
+
+  @override
+  Future<CarResponseModel> searchCars({required String query, int page = 1}) async {
+    final response = await _dio.get(
+      ApiConstants.searchCars,
+      queryParameters: {
+        'search': query,
+        'page': page,
+      },
+    );
+    return CarResponseModel.fromJson(response.data);
+  }
+
+  @override
+  Future<CarResponseModel> getSuggestedCars({int page = 1}) async {
+    final response = await _dio.get(
+      ApiConstants.suggestCars,
       queryParameters: {'page': page},
     );
     return CarResponseModel.fromJson(response.data);

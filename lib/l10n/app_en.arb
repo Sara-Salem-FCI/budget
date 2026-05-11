@@ -104,5 +104,24 @@
         "type": "int"
       }
     }
-  }
+  },
+  "clear_all": "Clear All",
+  "recent": "Recent",
+  "suggested_cars": "Suggested cars for you",
+  "no_results": "No results found",
+  "filter": "Filter",
+  "price": "Price",
+  "min_limit": "Min",
+  "max_limit": "Max",
+  "car_mileage": "Mileage",
+  "km": "km",
+  "sar": "SAR",
+  "brand": "Brand",
+  "fuel_type": "Fuel Type",
+  "reset": "Reset",
+  "apply": "Apply",
+  "favorites": "Favorites",
+  "no_favorites_yet": "No cars in favorites yet!",
+  "please_login": "Please login to continue",
+  "search_favorites_hint": "Search for your dream car......"
 }

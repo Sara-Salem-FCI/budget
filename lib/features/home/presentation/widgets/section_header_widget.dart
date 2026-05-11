@@ -5,11 +5,13 @@ import 'package:budget/l10n/app_localizations.dart';
 
 class SectionHeaderWidget extends StatelessWidget {
   final String title;
+  final String? actionText;
   final VoidCallback? onMoreTap;
 
   const SectionHeaderWidget({
     super.key,
     required this.title,
+    this.actionText,
     this.onMoreTap,
   });
 
@@ -35,7 +37,7 @@ class SectionHeaderWidget extends StatelessWidget {
                 ),
                 const SizedBox(width: 4),
                 Text(
-                  l10n.more,
+                  actionText ?? l10n.more,
                   style: const TextStyle(
                     color: Colors.grey,
                     fontSize: 14,

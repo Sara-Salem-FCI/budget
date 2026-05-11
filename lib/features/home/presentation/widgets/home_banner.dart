@@ -15,7 +15,7 @@ class HomeBanner extends StatelessWidget {
           color: AppColors.primary,
           borderRadius: BorderRadius.circular(20),
           image: const DecorationImage(
-            image: AssetImage(Assets.imagesImg),
+            image: AssetImage(Assets.imagesLanding),
             fit: BoxFit.cover,
             opacity: 0.6,
           ),

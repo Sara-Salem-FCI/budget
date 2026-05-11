@@ -20,4 +20,17 @@ class HomeRepository with RepoErrorHandler {
   Future<Either<Failure, CarResponseModel>> getLastSeen({int page = 1}) async {
     return catchError(() => _remoteDataSource.getLastSeen(page: page));
   }
+
+  Future<Either<Failure, CarResponseModel>> searchCars({
+    required String query,
+    int page = 1,
+  }) async {
+    return catchError(
+      () => _remoteDataSource.searchCars(query: query, page: page),
+    );
+  }
+
+  Future<Either<Failure, CarResponseModel>> getSuggestedCars({int page = 1}) async {
+    return catchError(() => _remoteDataSource.getSuggestedCars(page: page));
+  }
 }

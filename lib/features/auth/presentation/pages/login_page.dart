@@ -10,7 +10,6 @@ import 'package:budget/core/router/app_router.dart';
 import 'package:budget/core/di/service_locator.dart';
 import 'package:budget/l10n/app_localizations.dart';
 import '../widgets/auth_text_field.dart';
-import '../widgets/social_auth_buttons.dart';
 import '../widgets/top_glow.dart';
 import '../widgets/auth_button.dart';
 import '../widgets/auth_header.dart';
@@ -150,11 +149,6 @@ class _LoginPageState extends State<LoginPage> {
 
                         OrDivider(text: l10n.or),
                         SizedBox(height: 20.h),
-
-                        SocialAuthButtons(
-                          onGooglePressed: () => cubit.googleLogin(),
-                          onApplePressed: () => cubit.appleLogin(),
-                        ),
                         
                         SizedBox(height: 20.h),
                         
