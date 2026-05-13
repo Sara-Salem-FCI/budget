@@ -127,6 +127,7 @@
   "search_favorites_hint": "ابحث عن سيارة احلامك......",
   "notifications": "الاشعارات",
   "notifications_toggle_success": "تم تحديث إعدادات الإشعارات بنجاح",
+  "language_change_failed": "تعذر تحديث اللغة. يرجى المحاولة مرة أخرى.",
   "no_notifications_yet": "لا يوجد اشعارات حتي الان !",
   "my_page": "صفحتي",
   "edit_profile": "تعديل الصفحة الشخصية",

@@ -127,6 +127,7 @@
   "search_favorites_hint": "Search for your dream car......",
   "notifications": "Notifications",
   "notifications_toggle_success": "Notification settings updated successfully",
+  "language_change_failed": "Could not update language. Please try again.",
   "no_notifications_yet": "No notifications yet!",
   "my_page": "My Page",
   "edit_profile": "Edit Profile",

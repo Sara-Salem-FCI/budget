@@ -42,8 +42,8 @@ Future<void> setupServiceLocator() async {
   final sharedPrefs = await SharedPreferences.getInstance();
   getIt.registerLazySingleton(() => sharedPrefs);
 
-  // Network
-  final dio = DioFactory.getDio();
+  // Network (requires SharedPreferences for AcceptLanguageInterceptor)
+  final dio = DioFactory.getDio(sharedPrefs);
   getIt.registerLazySingleton(() => dio);
 
   // Data Sources
@@ -107,5 +107,11 @@ Future<void> setupServiceLocator() async {
       getIt<ProfileRepository>(),
     ),
   );
-  getIt.registerLazySingleton(() => LocaleCubit(getIt()));
+  getIt.registerLazySingleton(
+    () => LocaleCubit(
+      getIt<SharedPreferences>(),
+      getIt<ProfileRepository>(),
+      getIt<AuthRepository>(),
+    ),
+  );
 }

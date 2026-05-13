@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'accept_language_interceptor.dart';
 import 'api_constants.dart';
 import 'auth_interceptor.dart';
 
@@ -7,7 +9,7 @@ import 'auth_interceptor.dart';
 class DioFactory {
   static Dio? _dio;
 
-  static Dio getDio() {
+  static Dio getDio(SharedPreferences prefs) {
     if (_dio != null) return _dio!;
 
     final dio = Dio()
@@ -19,13 +21,12 @@ class DioFactory {
         headers: {
           ApiHeaders.contentType: ApiHeaders.applicationJson,
           ApiHeaders.accept: ApiHeaders.applicationJson,
-          'accept-language': 'ar',
         },
       );
 
-    // Add logging and auth interceptors
     dio.interceptors.addAll([
       AuthInterceptor(),
+      AcceptLanguageInterceptor(prefs),
       PrettyDioLogger(
         requestHeader: true,
         requestBody: true,
@@ -37,6 +38,6 @@ class DioFactory {
     ]);
 
     _dio = dio;
-    return dio;
+    return _dio!;
   }
 }

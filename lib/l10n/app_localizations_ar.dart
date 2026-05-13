@@ -319,6 +319,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notifications_toggle_success => 'تم تحديث إعدادات الإشعارات بنجاح';
 
   @override
+  String get language_change_failed =>
+      'تعذر تحديث اللغة. يرجى المحاولة مرة أخرى.';
+
+  @override
   String get no_notifications_yet => 'لا يوجد اشعارات حتي الان !';
 
   @override

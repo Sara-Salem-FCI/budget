@@ -324,6 +324,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'Notification settings updated successfully';
 
   @override
+  String get language_change_failed =>
+      'Could not update language. Please try again.';
+
+  @override
   String get no_notifications_yet => 'No notifications yet!';
 
   @override

@@ -248,9 +248,8 @@ class ProfilePage extends StatelessWidget {
       context: context,
       builder: (dialogContext) => LanguageDialog(
         currentLocale: currentLocale,
-        onLanguageSelected: (localeCode) {
-          context.read<LocaleCubit>().changeLanguage(localeCode);
-        },
+        onLanguageSelected: (localeCode) =>
+            context.read<LocaleCubit>().changeLanguage(localeCode),
       ),
     );
   }

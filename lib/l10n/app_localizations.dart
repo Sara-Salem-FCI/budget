@@ -692,6 +692,12 @@ abstract class AppLocalizations {
   /// **'Notification settings updated successfully'**
   String get notifications_toggle_success;
 
+  /// No description provided for @language_change_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not update language. Please try again.'**
+  String get language_change_failed;
+
   /// No description provided for @no_notifications_yet.
   ///
   /// In en, this message translates to:
