@@ -26,6 +26,7 @@ abstract class AuthRepository {
   Future<bool> isOnboardingVisited();
   /// Persists an updated user snapshot (e.g. after profile settings change).
   Future<void> cacheUser(UserModel user);
+  Future<Either<Failure, Unit>> deleteAccount();
 }
 
 /// Implementation of [AuthRepository].
@@ -154,6 +155,18 @@ class AuthRepositoryImpl with RepoErrorHandler implements AuthRepository {
   @override
   Future<void> cacheUser(UserModel user) async {
     await _localDataSource.saveUserData(jsonEncode(user.toJson()));
+  }
+
+  @override
+  Future<Either<Failure, Unit>> deleteAccount() async {
+    final result = await catchError(() => _remoteDataSource.deleteAccount());
+    return result.fold<Future<Either<Failure, Unit>>>(
+      (failure) async => Left(failure),
+      (_) async {
+        await _localDataSource.deleteToken();
+        return const Right(unit);
+      },
+    );
   }
 
   @override

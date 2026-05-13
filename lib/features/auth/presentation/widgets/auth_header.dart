@@ -21,6 +21,7 @@ class AuthHeader extends StatelessWidget {
           child: Text(
             title,
             style: AppStyles.heading1.copyWith(
+              color: AppColors.primary,
               fontSize: 32.sp,
               fontWeight: FontWeight.w900,
             ),

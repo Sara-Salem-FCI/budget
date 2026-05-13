@@ -15,6 +15,7 @@ abstract class AuthRemoteDataSource {
   Future<UserModel> guestLogin(String fcmToken);
   Future<UserModel> socialAuth(String uid, String fcmToken);
   Future<void> logout();
+  Future<void> deleteAccount();
 }
 
 /// Implementation of [AuthRemoteDataSource] using Dio.
@@ -94,5 +95,19 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<void> logout() async {
     await _dio.post(ApiConstants.logout);
+  }
+
+  @override
+  Future<void> deleteAccount() async {
+    final response = await _dio.post<Map<String, dynamic>>(
+      ApiConstants.userDeleteAccount,
+    );
+    final data = response.data;
+    if (data == null || data['success'] != true) {
+      throw DioException(
+        requestOptions: response.requestOptions,
+        message: data?['message']?.toString(),
+      );
+    }
   }
 }

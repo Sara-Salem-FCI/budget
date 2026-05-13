@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                               Localizations.localeOf(context).languageCode == 'ar'
                                   ? AppAssets.logoAr
                                   : AppAssets.logo,
-                              height: 70.h,
+                              height: 50.h,
                             ),
                           ),
                           SizedBox(height: 30.h),

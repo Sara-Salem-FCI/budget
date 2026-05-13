@@ -33,6 +33,7 @@ abstract class ApiConstants {
   static const String notifications = 'user/notifications';
   static const String userToggleNotification = 'user/toggle-notification';
   static const String userChangeLanguage = 'user/lang';
+  static const String userDeleteAccount = 'user/delete-account';
 }
 
 /// Header keys and values.

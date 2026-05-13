@@ -26,11 +26,10 @@ class ProfileCubit extends Cubit<ProfileState> {
     if (user.isNotify == enabled) return;
 
     emit(
-      ProfileLoaded(
-        loaded.user,
+      loaded.copyWith(
         isNotificationToggleBusy: true,
         showNotificationToggleSuccess: false,
-        notificationToggleErrorMessage: null,
+        clearNotificationToggleErrorMessage: true,
       ),
     );
 
@@ -39,8 +38,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     result.fold(
       (failure) {
         emit(
-          ProfileLoaded(
-            loaded.user,
+          loaded.copyWith(
             isNotificationToggleBusy: false,
             showNotificationToggleSuccess: false,
             notificationToggleErrorMessage: failure.message,
@@ -49,11 +47,11 @@ class ProfileCubit extends Cubit<ProfileState> {
       },
       (_) {
         emit(
-          ProfileLoaded(
-            user.copyWith(isNotify: enabled),
+          loaded.copyWith(
+            user: user.copyWith(isNotify: enabled),
             isNotificationToggleBusy: false,
             showNotificationToggleSuccess: true,
-            notificationToggleErrorMessage: null,
+            clearNotificationToggleErrorMessage: true,
           ),
         );
       },
@@ -64,13 +62,45 @@ class ProfileCubit extends Cubit<ProfileState> {
     if (state is! ProfileLoaded) return;
     final loaded = state as ProfileLoaded;
     emit(
-      ProfileLoaded(
-        loaded.user,
-        isNotificationToggleBusy: loaded.isNotificationToggleBusy,
+      loaded.copyWith(
         showNotificationToggleSuccess: false,
-        notificationToggleErrorMessage: null,
+        clearNotificationToggleErrorMessage: true,
       ),
     );
+  }
+
+  Future<void> deleteAccount() async {
+    if (state is! ProfileLoaded) return;
+    final loaded = state as ProfileLoaded;
+    final user = loaded.user;
+    if (user == null || loaded.isDeleteAccountBusy) return;
+
+    emit(
+      loaded.copyWith(
+        isDeleteAccountBusy: true,
+        clearDeleteAccountErrorMessage: true,
+      ),
+    );
+
+    final result = await _authRepository.deleteAccount();
+
+    result.fold(
+      (failure) {
+        emit(
+          loaded.copyWith(
+            isDeleteAccountBusy: false,
+            deleteAccountErrorMessage: failure.message,
+          ),
+        );
+      },
+      (_) => emit(DeleteAccountSuccess()),
+    );
+  }
+
+  void clearDeleteAccountFeedback() {
+    if (state is! ProfileLoaded) return;
+    final loaded = state as ProfileLoaded;
+    emit(loaded.copyWith(clearDeleteAccountErrorMessage: true));
   }
 
   Future<void> logout() async {

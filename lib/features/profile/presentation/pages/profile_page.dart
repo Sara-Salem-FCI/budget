@@ -6,6 +6,7 @@ import 'package:budget/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:budget/features/profile/presentation/cubit/profile_state.dart';
 import 'package:budget/features/profile/presentation/widgets/profile_menu_tile.dart';
 import 'package:budget/features/profile/presentation/widgets/profile_notification_toggle_tile.dart';
+import 'package:budget/features/profile/presentation/widgets/delete_account_confirmation_dialog.dart';
 import 'package:budget/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:budget/core/widgets/confirmation_dialog.dart';
@@ -75,10 +76,30 @@ class ProfilePage extends StatelessWidget {
                     context.read<ProfileCubit>().clearNotificationFeedback();
                   },
                 ),
+                BlocListener<ProfileCubit, ProfileState>(
+                  listenWhen: (previous, current) =>
+                      current is ProfileLoaded &&
+                      current.deleteAccountErrorMessage != null,
+                  listener: (context, state) {
+                    final loaded = state as ProfileLoaded;
+                    final raw = loaded.deleteAccountErrorMessage!;
+                    final messenger = ScaffoldMessenger.of(context);
+                    messenger.showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          FailureLocalizer.localize(raw, context),
+                          style: AppStyles.body1.copyWith(color: AppColors.white),
+                        ),
+                        backgroundColor: Colors.red.shade700,
+                      ),
+                    );
+                    context.read<ProfileCubit>().clearDeleteAccountFeedback();
+                  },
+                ),
               ],
               child: BlocConsumer<ProfileCubit, ProfileState>(
                 listener: (context, state) {
-                  if (state is LogoutSuccess) {
+                  if (state is LogoutSuccess || state is DeleteAccountSuccess) {
                     context.go(AppRouter.login);
                   }
                 },
@@ -86,6 +107,9 @@ class ProfilePage extends StatelessWidget {
                   final user = state is ProfileLoaded ? state.user : null;
                   final notificationBusy = state is ProfileLoaded
                       ? state.isNotificationToggleBusy
+                      : false;
+                  final deleteAccountBusy = state is ProfileLoaded
+                      ? state.isDeleteAccountBusy
                       : false;
 
                   return Scaffold(
@@ -98,6 +122,12 @@ class ProfilePage extends StatelessWidget {
                         l10n.my_page,
                         style: AppStyles.heading2,
                       ),
+                      bottom: deleteAccountBusy
+                          ? const PreferredSize(
+                              preferredSize: Size.fromHeight(3),
+                              child: LinearProgressIndicator(minHeight: 3),
+                            )
+                          : null,
                     ),
                     body: SingleChildScrollView(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -190,7 +220,9 @@ class ProfilePage extends StatelessWidget {
                             title: l10n.delete_account,
                             showArrow: false,
                             textColor: Colors.red,
-                            onTap: () => _showDeleteAccountDialog(context),
+                            onTap: deleteAccountBusy || user == null
+                                ? null
+                                : () => _showDeleteAccountDialog(context),
                           ),
                           const SizedBox(height: 90),
                         ],
@@ -225,17 +257,12 @@ class ProfilePage extends StatelessWidget {
   }
 
   void _showDeleteAccountDialog(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    
     showDialog(
       context: context,
-      builder: (dialogContext) => ConfirmationDialog(
-        title: l10n.delete_account,
-        message: l10n.logout_confirmation, 
-        yesText: l10n.yes,
-        noText: l10n.no,
-        onYes: () {
+      builder: (dialogContext) => DeleteAccountConfirmationDialog(
+        onConfirmDelete: () {
           Navigator.pop(dialogContext);
+          context.read<ProfileCubit>().deleteAccount();
         },
       ),
     );

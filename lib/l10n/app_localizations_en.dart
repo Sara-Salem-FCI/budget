@@ -358,6 +358,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get delete_account => 'Delete Account';
 
   @override
+  String get delete_account_confirmation =>
+      'This will permanently delete your account and all related data. You will not be able to recover it. Do you want to continue?';
+
+  @override
+  String get delete_account_confirm_action => 'Delete permanently';
+
+  @override
   String get logout_confirmation => 'Are you sure you want to logout?';
 
   @override

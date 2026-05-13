@@ -353,6 +353,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get delete_account => 'حذف الحساب';
 
   @override
+  String get delete_account_confirmation =>
+      'سيؤدي ذلك إلى حذف حسابك وجميع البيانات المرتبطة به بشكل نهائي ولن تتمكن من استعادته. هل تريد المتابعة؟';
+
+  @override
+  String get delete_account_confirm_action => 'حذف نهائي';
+
+  @override
   String get logout_confirmation =>
       'هل أنت متأكد أنك تريد تسجيل الخروج بالفعل؟';
 

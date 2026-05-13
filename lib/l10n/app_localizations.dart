@@ -758,6 +758,18 @@ abstract class AppLocalizations {
   /// **'Delete Account'**
   String get delete_account;
 
+  /// No description provided for @delete_account_confirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'This will permanently delete your account and all related data. You will not be able to recover it. Do you want to continue?'**
+  String get delete_account_confirmation;
+
+  /// No description provided for @delete_account_confirm_action.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete permanently'**
+  String get delete_account_confirm_action;
+
   /// No description provided for @logout_confirmation.
   ///
   /// In en, this message translates to:
