@@ -13,7 +13,11 @@ import 'package:budget/features/home/presentation/pages/main_layout_page.dart';
 import 'package:budget/features/search/presentation/pages/search_page.dart';
 import 'package:budget/features/filter/data/models/filter_request_model.dart';
 import 'package:budget/features/favorites/presentation/pages/favorites_page.dart';
+import 'package:budget/core/di/service_locator.dart';
+import 'package:budget/features/profile/presentation/cubit/edit_profile_cubit.dart';
+import 'package:budget/features/profile/presentation/pages/edit_profile_page.dart';
 import 'package:budget/features/profile/presentation/pages/profile_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:budget/features/home/presentation/pages/available_cars_page.dart';
 import 'package:budget/features/home/presentation/pages/current_offers_page.dart';
 import 'package:budget/features/notifications/presentation/pages/notifications_page.dart';
@@ -38,6 +42,7 @@ abstract class AppRouter {
   static const String search = '/search';
   static const String favorites = '/favorites';
   static const String profile = '/profile';
+  static const String editProfile = '/profile/edit-profile';
   static const String availableCars = '/available-cars';
   static const String currentOffers = '/current-offers';
   static const String notifications = '/notifications';
@@ -142,6 +147,15 @@ abstract class AppRouter {
               GoRoute(
                 path: profile,
                 builder: (context, state) => const ProfilePage(),
+                routes: [
+                  GoRoute(
+                    path: 'edit-profile',
+                    builder: (context, state) => BlocProvider(
+                      create: (_) => getIt<EditProfileCubit>()..load(),
+                      child: const EditProfilePage(),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

@@ -27,6 +27,13 @@ abstract class AuthRepository {
   /// Persists an updated user snapshot (e.g. after profile settings change).
   Future<void> cacheUser(UserModel user);
   Future<Either<Failure, Unit>> deleteAccount();
+
+  Future<Either<Failure, UserModel>> updateProfile({
+    required UserModel currentUser,
+    required String name,
+    required String email,
+    String? imageFilePath,
+  });
 }
 
 /// Implementation of [AuthRepository].
@@ -165,6 +172,30 @@ class AuthRepositoryImpl with RepoErrorHandler implements AuthRepository {
       (_) async {
         await _localDataSource.deleteToken();
         return const Right(unit);
+      },
+    );
+  }
+
+  @override
+  Future<Either<Failure, UserModel>> updateProfile({
+    required UserModel currentUser,
+    required String name,
+    required String email,
+    String? imageFilePath,
+  }) async {
+    final result = await catchError(
+      () => _remoteDataSource.updateProfile(
+        currentUser: currentUser,
+        name: name,
+        email: email,
+        imageFilePath: imageFilePath,
+      ),
+    );
+    return result.fold(
+      (failure) => Left(failure),
+      (user) async {
+        await _localDataSource.saveUserData(jsonEncode(user.toJson()));
+        return Right(user);
       },
     );
   }

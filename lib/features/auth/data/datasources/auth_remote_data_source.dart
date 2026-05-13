@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:budget/core/api/api_constants.dart';
+import 'package:budget/core/api/api_form_fields.dart';
 import '../models/user_model.dart';
 
 /// Interface for the authentication remote data source.
@@ -16,6 +17,14 @@ abstract class AuthRemoteDataSource {
   Future<UserModel> socialAuth(String uid, String fcmToken);
   Future<void> logout();
   Future<void> deleteAccount();
+
+  /// Multipart `POST auth/update-profile`. Merges response [data] into [currentUser] (keeps token).
+  Future<UserModel> updateProfile({
+    required UserModel currentUser,
+    required String name,
+    required String email,
+    String? imageFilePath,
+  });
 }
 
 /// Implementation of [AuthRemoteDataSource] using Dio.
@@ -109,5 +118,42 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         message: data?['message']?.toString(),
       );
     }
+  }
+
+  @override
+  Future<UserModel> updateProfile({
+    required UserModel currentUser,
+    required String name,
+    required String email,
+    String? imageFilePath,
+  }) async {
+    final map = <String, dynamic>{
+      ApiFormFields.profileName: name,
+      ApiFormFields.profileEmail: email,
+    };
+    if (imageFilePath != null && imageFilePath.trim().isNotEmpty) {
+      map[ApiFormFields.profileImage] = await MultipartFile.fromFile(
+        imageFilePath.trim(),
+      );
+    }
+    final response = await _dio.post<Map<String, dynamic>>(
+      ApiConstants.updateProfile,
+      data: FormData.fromMap(map),
+    );
+    final body = response.data;
+    if (body == null || body['success'] != true) {
+      throw DioException(
+        requestOptions: response.requestOptions,
+        message: body?['message']?.toString(),
+      );
+    }
+    final raw = body['data'];
+    if (raw is! Map<String, dynamic>) {
+      throw DioException(
+        requestOptions: response.requestOptions,
+        message: body['message']?.toString(),
+      );
+    }
+    return UserModel.fromUpdateProfileResponse(raw, currentUser);
   }
 }

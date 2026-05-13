@@ -25,6 +25,7 @@ import 'package:budget/features/home/presentation/cubit/home_cubit.dart';
 import 'package:budget/features/search/presentation/cubit/search_cubit.dart';
 import 'package:budget/features/profile/data/datasources/profile_remote_data_source.dart';
 import 'package:budget/features/profile/data/repositories/profile_repository.dart';
+import 'package:budget/features/profile/presentation/cubit/edit_profile_cubit.dart';
 import 'package:budget/features/profile/presentation/cubit/profile_cubit.dart';
 
 import 'package:budget/features/notifications/data/datasources/notification_remote_data_source.dart';
@@ -96,7 +97,9 @@ Future<void> setupServiceLocator() async {
   getIt.registerLazySingleton(() => RegisterCubit(getIt()));
   getIt.registerFactory(() => LoginCubit(getIt()));
   getIt.registerLazySingleton(() => ForgotPasswordCubit(getIt()));
-  getIt.registerFactory(() => HomeCubit(getIt(), getIt()));
+  getIt.registerLazySingleton<HomeCubit>(
+    () => HomeCubit(getIt(), getIt()),
+  );
   getIt.registerFactory(() => SearchCubit(getIt(), getIt()));
   getIt.registerFactory(() => FilterCubit(getIt()));
   getIt.registerFactory(() => FavoritesCubit(getIt()));
@@ -107,7 +110,10 @@ Future<void> setupServiceLocator() async {
       getIt<ProfileRepository>(),
     ),
   );
-  getIt.registerLazySingleton(
+  getIt.registerFactory<EditProfileCubit>(
+    () => EditProfileCubit(getIt<AuthRepository>()),
+  );
+  getIt.registerLazySingleton<LocaleCubit>(
     () => LocaleCubit(
       getIt<SharedPreferences>(),
       getIt<ProfileRepository>(),

@@ -830,4 +830,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get year_label => 'Year';
+
+  @override
+  String get update_profile_action => 'Update';
+
+  @override
+  String get edit_profile_success => 'Profile updated successfully';
+
+  @override
+  String get edit_profile_not_signed_in =>
+      'Please sign in to edit your profile';
 }

@@ -1,6 +1,7 @@
 import 'package:budget/core/constants/app_colors.dart';
 import 'package:budget/core/constants/app_styles.dart';
 import 'package:budget/core/di/service_locator.dart';
+import 'package:budget/features/home/presentation/cubit/home_cubit.dart';
 import 'package:budget/core/router/app_router.dart';
 import 'package:budget/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:budget/features/profile/presentation/cubit/profile_state.dart';
@@ -178,7 +179,12 @@ class ProfilePage extends StatelessWidget {
                           // Menu Items
                           ProfileMenuTile(
                             title: l10n.edit_profile,
-                            onTap: () {},
+                            onTap: () async {
+                              await context.push<void>(AppRouter.editProfile);
+                              if (!context.mounted) return;
+                              await context.read<ProfileCubit>().loadProfile();
+                              await getIt<HomeCubit>().syncUserFromAuth();
+                            },
                           ),
                           ProfileNotificationToggleTile(
                             title: l10n.notifications,

@@ -5,4 +5,9 @@ abstract class ApiFormFields {
 
   /// User interface language code (e.g. `en`, `ar`).
   static const String language = 'lang';
+
+  /// Update profile (multipart).
+  static const String profileName = 'name';
+  static const String profileEmail = 'email';
+  static const String profileImage = 'profile_image';
 }

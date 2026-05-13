@@ -817,4 +817,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get year_label => 'سنة الصنع';
+
+  @override
+  String get update_profile_action => 'تحديث';
+
+  @override
+  String get edit_profile_success => 'تم تحديث الملف الشخصي بنجاح';
+
+  @override
+  String get edit_profile_not_signed_in =>
+      'يرجى تسجيل الدخول لتعديل الملف الشخصي';
 }

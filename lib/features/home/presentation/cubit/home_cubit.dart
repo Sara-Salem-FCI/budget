@@ -54,4 +54,13 @@ class HomeCubit extends Cubit<HomeState> {
       },
     );
   }
+
+  /// Re-reads the cached user from [AuthRepository] so headers and profile stay in sync
+  /// after settings like edit profile (no full home reload).
+  Future<void> syncUserFromAuth() async {
+    if (state is! HomeLoaded) return;
+    final loaded = state as HomeLoaded;
+    final user = await _authRepository.getUser();
+    emit(loaded.copyWith(user: user));
+  }
 }

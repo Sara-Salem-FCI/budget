@@ -12,6 +12,7 @@ class AuthTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final AutovalidateMode? autovalidateMode;
+  final TextDirection? textDirection;
 
   const AuthTextField({
     super.key,
@@ -23,6 +24,7 @@ class AuthTextField extends StatelessWidget {
     this.controller,
     this.validator,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
+    this.textDirection,
   });
 
   @override
@@ -54,6 +56,7 @@ class AuthTextField extends StatelessWidget {
               color: AppColors.white,
               child: TextFormField(
                 controller: controller,
+                textDirection: textDirection,
                 obscureText: isPassword,
                 keyboardType: keyboardType,
                 onChanged: (value) {

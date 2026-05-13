@@ -276,5 +276,8 @@
   "black_color": "اسود",
   "white_color": "ابيض",
   "model": "الموديل",
-  "year_label": "سنة الصنع"
+  "year_label": "سنة الصنع",
+  "update_profile_action": "تحديث",
+  "edit_profile_success": "تم تحديث الملف الشخصي بنجاح",
+  "edit_profile_not_signed_in": "يرجى تسجيل الدخول لتعديل الملف الشخصي"
 }

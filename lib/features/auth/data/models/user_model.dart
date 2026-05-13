@@ -66,4 +66,25 @@ class UserModel {
       token: token ?? this.token,
     );
   }
+
+  /// Merges `data` from `POST auth/update-profile` with [current] (keeps auth token).
+  factory UserModel.fromUpdateProfileResponse(
+    Map<String, dynamic> data,
+    UserModel current,
+  ) {
+    return current.copyWith(
+      id: (data['id'] as num?)?.toInt(),
+      name: data['name'] as String?,
+      email: data['email'] as String?,
+      phone: data['phone'] as String?,
+      profileImage: data['profile_image'] as String?,
+      lang: data['lang'] as String?,
+      isVerified: data['is_verified'] as bool?,
+      latitude: data['latitude'] as String?,
+      longitude: data['longitude'] as String?,
+      isActive: data['is_active'] as bool?,
+      isNotify: data['is_notify'] as bool?,
+      token: current.token,
+    );
+  }
 }

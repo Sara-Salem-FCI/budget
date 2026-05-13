@@ -33,6 +33,27 @@ class HomeLoaded extends HomeState {
     this.lastSeenPagination,
   });
 
+  HomeLoaded copyWith({
+    UserModel? user,
+    List<CarModel>? activeCars,
+    List<CarModel>? currentOffers,
+    List<CarModel>? lastSeen,
+    PaginationModel? activeCarsPagination,
+    PaginationModel? currentOffersPagination,
+    PaginationModel? lastSeenPagination,
+  }) {
+    return HomeLoaded(
+      user: user ?? this.user,
+      activeCars: activeCars ?? this.activeCars,
+      currentOffers: currentOffers ?? this.currentOffers,
+      lastSeen: lastSeen ?? this.lastSeen,
+      activeCarsPagination: activeCarsPagination ?? this.activeCarsPagination,
+      currentOffersPagination:
+          currentOffersPagination ?? this.currentOffersPagination,
+      lastSeenPagination: lastSeenPagination ?? this.lastSeenPagination,
+    );
+  }
+
   @override
   List<Object?> get props => [
         user,

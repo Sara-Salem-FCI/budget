@@ -1591,6 +1591,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Year'**
   String get year_label;
+
+  /// No description provided for @update_profile_action.
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
+  String get update_profile_action;
+
+  /// No description provided for @edit_profile_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile updated successfully'**
+  String get edit_profile_success;
+
+  /// No description provided for @edit_profile_not_signed_in.
+  ///
+  /// In en, this message translates to:
+  /// **'Please sign in to edit your profile'**
+  String get edit_profile_not_signed_in;
 }
 
 class _AppLocalizationsDelegate
