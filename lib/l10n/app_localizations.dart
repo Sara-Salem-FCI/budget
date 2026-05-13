@@ -686,6 +686,12 @@ abstract class AppLocalizations {
   /// **'Notifications'**
   String get notifications;
 
+  /// No description provided for @notifications_toggle_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification settings updated successfully'**
+  String get notifications_toggle_success;
+
   /// No description provided for @no_notifications_yet.
   ///
   /// In en, this message translates to:

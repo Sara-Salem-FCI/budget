@@ -31,6 +31,7 @@ abstract class ApiConstants {
   static const String suggestCars = 'suggest-cars';
   static const String searchHistory = 'main/search-history';
   static const String notifications = 'user/notifications';
+  static const String userToggleNotification = 'user/toggle-notification';
 }
 
 /// Header keys and values.

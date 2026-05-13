@@ -126,6 +126,7 @@
   "please_login": "يرجى تسجيل الدخول للمتابعة",
   "search_favorites_hint": "ابحث عن سيارة احلامك......",
   "notifications": "الاشعارات",
+  "notifications_toggle_success": "تم تحديث إعدادات الإشعارات بنجاح",
   "no_notifications_yet": "لا يوجد اشعارات حتي الان !",
   "my_page": "صفحتي",
   "edit_profile": "تعديل الصفحة الشخصية",

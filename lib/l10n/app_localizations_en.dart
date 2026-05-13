@@ -320,6 +320,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notifications => 'Notifications';
 
   @override
+  String get notifications_toggle_success =>
+      'Notification settings updated successfully';
+
+  @override
   String get no_notifications_yet => 'No notifications yet!';
 
   @override

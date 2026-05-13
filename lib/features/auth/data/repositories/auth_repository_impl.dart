@@ -24,6 +24,8 @@ abstract class AuthRepository {
   Future<UserModel?> getUser();
   Future<void> setOnboardingVisited();
   Future<bool> isOnboardingVisited();
+  /// Persists an updated user snapshot (e.g. after profile settings change).
+  Future<void> cacheUser(UserModel user);
 }
 
 /// Implementation of [AuthRepository].
@@ -148,6 +150,11 @@ class AuthRepositoryImpl with RepoErrorHandler implements AuthRepository {
 
   @override
   Future<bool> isOnboardingVisited() => _localDataSource.isOnboardingVisited();
+
+  @override
+  Future<void> cacheUser(UserModel user) async {
+    await _localDataSource.saveUserData(jsonEncode(user.toJson()));
+  }
 
   @override
   Future<Either<Failure, UserModel>> guestLogin(String fcmToken) async {

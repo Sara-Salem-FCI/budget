@@ -316,6 +316,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notifications => 'الاشعارات';
 
   @override
+  String get notifications_toggle_success => 'تم تحديث إعدادات الإشعارات بنجاح';
+
+  @override
   String get no_notifications_yet => 'لا يوجد اشعارات حتي الان !';
 
   @override

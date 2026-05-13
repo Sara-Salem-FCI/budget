@@ -14,10 +14,24 @@ class ProfileLoading extends ProfileState {}
 
 class ProfileLoaded extends ProfileState {
   final UserModel? user;
-  const ProfileLoaded(this.user);
+  final bool isNotificationToggleBusy;
+  final bool showNotificationToggleSuccess;
+  final String? notificationToggleErrorMessage;
+
+  const ProfileLoaded(
+    this.user, {
+    this.isNotificationToggleBusy = false,
+    this.showNotificationToggleSuccess = false,
+    this.notificationToggleErrorMessage,
+  });
 
   @override
-  List<Object?> get props => [user];
+  List<Object?> get props => [
+        user,
+        isNotificationToggleBusy,
+        showNotificationToggleSuccess,
+        notificationToggleErrorMessage,
+      ];
 }
 
 class ProfileError extends ProfileState {
@@ -29,4 +43,5 @@ class ProfileError extends ProfileState {
 }
 
 class LogoutLoading extends ProfileState {}
+
 class LogoutSuccess extends ProfileState {}
