@@ -11,6 +11,7 @@ import 'package:budget/features/auth/presentation/pages/new_password_page.dart';
 
 import 'package:budget/features/home/presentation/pages/main_layout_page.dart';
 import 'package:budget/features/search/presentation/pages/search_page.dart';
+import 'package:budget/features/filter/data/models/filter_request_model.dart';
 import 'package:budget/features/favorites/presentation/pages/favorites_page.dart';
 import 'package:budget/features/profile/presentation/pages/profile_page.dart';
 import 'package:budget/features/home/presentation/pages/available_cars_page.dart';
@@ -115,7 +116,16 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 path: search,
-                builder: (context, state) => const SearchPage(),
+                builder: (context, state) {
+                  final extra = state.extra;
+                  if (extra is FilterRequestModel) {
+                    return SearchPage(initialFilter: extra);
+                  }
+                  if (extra is String) {
+                    return SearchPage(initialQuery: extra);
+                  }
+                  return const SearchPage();
+                },
               ),
             ],
           ),

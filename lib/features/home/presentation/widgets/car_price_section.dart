@@ -22,31 +22,6 @@ class CarPriceSection extends StatelessWidget {
             color: AppColors.primary,
           ),
         ),
-        if (car.hasDiscount) ...[
-          const SizedBox(height: 4),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFD32F2F),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Text(
-                  '-${car.discount}%',
-                  style: AppStyles.captionLight.copyWith(
-                    color: Colors.white,
-                    fontSize: 10,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 6),
-              // We don't have oldPrice in CarModel, 
-              // so we just show the discount badge for now.
-            ],
-          ),
-        ],
       ],
     );
   }

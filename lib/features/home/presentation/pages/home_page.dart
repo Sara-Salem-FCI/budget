@@ -6,7 +6,6 @@ import 'package:budget/l10n/app_localizations.dart';
 import 'package:budget/core/constants/app_colors.dart';
 import 'package:budget/features/home/presentation/widgets/home_header.dart';
 import 'package:budget/features/home/presentation/widgets/home_banner.dart';
-import 'package:budget/features/home/presentation/widgets/custom_search_bar.dart';
 import 'package:budget/features/home/presentation/widgets/section_header_widget.dart';
 import 'package:budget/features/home/presentation/widgets/horizontal_car_list.dart';
 import 'package:budget/features/home/presentation/widgets/available_cars_list.dart';
@@ -15,24 +14,42 @@ import 'package:budget/features/home/presentation/cubit/home_state.dart';
 import 'package:go_router/go_router.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late final HomeCubit _homeCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    _homeCubit = GetIt.instance<HomeCubit>();
+    _homeCubit.fetchHomeData();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final homeCubit = GetIt.instance<HomeCubit>()..fetchHomeData();
 
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
         child: BlocProvider.value(
-          value: homeCubit,
+          value: _homeCubit,
           child: VisibilityDetector(
             key: const Key('home_page'),
             onVisibilityChanged: (info) {
               if (info.visibleFraction == 1.0) {
-                homeCubit.fetchHomeData();
+                _homeCubit.fetchHomeData();
               }
             },
             child: BlocBuilder<HomeCubit, HomeState>(
@@ -50,13 +67,6 @@ class HomePage extends StatelessWidget {
                       SliverToBoxAdapter(child: HomeHeader(user: state.user)),
                       // Banner Section
                       const SliverToBoxAdapter(child: HomeBanner()),
-                      // Search Section
-                      const SliverToBoxAdapter(
-                        child: Padding(
-                          padding: EdgeInsets.fromLTRB(16, 24, 16, 8),
-                          child: CustomSearchBar(),
-                        ),
-                      ),
                       // Current Offers
                       SliverToBoxAdapter(
                         child: Padding(

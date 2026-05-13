@@ -19,7 +19,7 @@ class CarDetailsSection extends StatelessWidget {
           car.name,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: AppStyles.heading3.copyWith(fontSize: 16),
+          style: AppStyles.heading3.copyWith(fontSize: 16, color: Colors.black),
         ),
         const SizedBox(height: 8),
         CarInfoRow(

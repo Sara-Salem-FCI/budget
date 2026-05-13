@@ -16,8 +16,13 @@ import 'package:budget/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
+import 'package:budget/features/filter/data/models/filter_request_model.dart';
+
 class SearchPage extends StatefulWidget {
-  const SearchPage({super.key});
+  final String? initialQuery;
+  final FilterRequestModel? initialFilter;
+
+  const SearchPage({super.key, this.initialQuery, this.initialFilter});
 
   @override
   State<SearchPage> createState() => _SearchPageState();
@@ -25,6 +30,28 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   final _searchController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.initialQuery?.isNotEmpty == true) {
+      _searchController.text = widget.initialQuery!;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          context.read<SearchCubit>().search(widget.initialQuery!);
+        }
+      });
+    } else if (widget.initialFilter != null) {
+      if (widget.initialFilter!.search?.isNotEmpty == true) {
+        _searchController.text = widget.initialFilter!.search!;
+      }
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          context.read<SearchCubit>().applyFilter(widget.initialFilter!);
+        }
+      });
+    }
+  }
 
   @override
   void dispose() {
@@ -35,7 +62,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    
+
     return BlocProvider(
       create: (context) => GetIt.instance<SearchCubit>()..loadInitialData(),
       child: Builder(
@@ -52,10 +79,7 @@ class _SearchPageState extends State<SearchPage> {
               appBar: AppBar(
                 backgroundColor: AppColors.background,
                 elevation: 0,
-                title: Text(
-                  l10n.nav_search,
-                  style: AppStyles.heading2,
-                ),
+                title: Text(l10n.nav_search, style: AppStyles.heading2),
                 centerTitle: true,
               ),
               body: Column(
@@ -74,14 +98,15 @@ class _SearchPageState extends State<SearchPage> {
                         context.read<SearchCubit>().search(query);
                       },
                       onFilterTap: () async {
+                        final searchCubit = context.read<SearchCubit>();
                         final filterReq = await FilterBottomSheet.show(context);
                         if (filterReq != null) {
                           final combinedReq = filterReq.copyWith(
-                            search: _searchController.text.isNotEmpty ? _searchController.text : null,
+                            search: _searchController.text.isNotEmpty
+                                ? _searchController.text
+                                : null,
                           );
-                          if (context.mounted) {
-                            context.read<SearchCubit>().applyFilter(combinedReq);
-                          }
+                          searchCubit.applyFilter(combinedReq);
                         }
                       },
                     ),
@@ -97,10 +122,7 @@ class _SearchPageState extends State<SearchPage> {
 
                         if (state is SearchError) {
                           return Center(
-                            child: Text(
-                              state.message,
-                              style: AppStyles.body1,
-                            ),
+                            child: Text(state.message, style: AppStyles.body1),
                           );
                         }
 
@@ -125,29 +147,32 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  Widget _buildSuggestions(BuildContext context, SearchSuggestionsLoaded state, AppLocalizations l10n) {
+  Widget _buildSuggestions(
+    BuildContext context,
+    SearchSuggestionsLoaded state,
+    AppLocalizations l10n,
+  ) {
     return ListView(
       children: [
         if (state.recentSearches.isNotEmpty) ...[
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: SectionHeaderWidget(
-              title: l10n.recent,
-              onMoreTap: () {
-              },
+            child: SectionHeaderWidget(title: l10n.recent, onMoreTap: () {}),
+          ),
+          ...state.recentSearches.map(
+            (history) => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: RecentSearchItem(
+                query: history.query.isEmpty ? l10n.search_hint : history.query,
+                onTap: () {
+                  _searchController.text = history.query;
+                  context.read<SearchCubit>().searchFromHistory(history);
+                },
+                onRemove: () =>
+                    context.read<SearchCubit>().removeRecentSearch(history.id),
+              ),
             ),
           ),
-          ...state.recentSearches.map((history) => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: RecentSearchItem(
-              query: history.query.isEmpty ? l10n.search_hint : history.query,
-              onTap: () {
-                _searchController.text = history.query;
-                context.read<SearchCubit>().searchFromHistory(history);
-              },
-              onRemove: () => context.read<SearchCubit>().removeRecentSearch(history.id),
-            ),
-          )),
           const SizedBox(height: 24),
         ],
         Padding(
@@ -164,24 +189,20 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  Widget _buildResults(BuildContext context, SearchResultsLoaded state, AppLocalizations l10n) {
+  Widget _buildResults(
+    BuildContext context,
+    SearchResultsLoaded state,
+    AppLocalizations l10n,
+  ) {
     if (state.results.isEmpty) {
-      return Center(
-        child: Text(
-          l10n.no_results,
-          style: AppStyles.body1,
-        ),
-      );
+      return Center(child: Text(l10n.no_results, style: AppStyles.body1));
     }
 
     return ListView.builder(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 80),
       itemCount: state.results.length,
       itemBuilder: (context, index) {
-        return CarCard(
-          car: state.results[index],
-          style: CarCardStyle.list,
-        );
+        return CarCard(car: state.results[index], style: CarCardStyle.list);
       },
     );
   }
