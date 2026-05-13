@@ -36,7 +36,7 @@ class CarCardAvailable extends StatelessWidget {
         children: [
           // 1. Image Section (Top Rounded)
           Expanded(
-            flex: 5,
+            flex: 4,
             child: CarImageSection(
               car: car,
               height: double.infinity,
@@ -46,7 +46,7 @@ class CarCardAvailable extends StatelessWidget {
 
           // 2. Content Section
           Expanded(
-            flex: 6,
+            flex: 4,
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -63,12 +63,19 @@ class CarCardAvailable extends StatelessWidget {
                   bottomRight: Radius.circular(24),
                 ),
               ),
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(
+                    car.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppStyles.body2ExtraBold.copyWith(fontSize: 16, color: Colors.black),
+                  ),
+                  const SizedBox(height: 4),
                   _PriceSection(car: car, l10n: l10n),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 4),
                   _InfoSection(car: car, l10n: l10n),
                   const Spacer(),
                   _DetailsButton(l10n: l10n, car: car),
@@ -90,12 +97,18 @@ class _PriceSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      '${car.price} ${l10n.sar}',
-      style: AppStyles.body2ExtraBold.copyWith(
-        color: const Color(0xFF003DAB),
-        fontSize: 16,
-      ),
+    return Row(
+      children: [
+        Icon(Icons.monetization_on_outlined, size: 12, color: Colors.grey.shade400,),
+        SizedBox(width: 5,),
+        Text(
+          '${car.price} ${l10n.sar}',
+          style: AppStyles.body2ExtraBold.copyWith(
+            color: const Color(0xFF003DAB),
+            fontSize: 16,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -111,13 +124,6 @@ class _InfoSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          car.name,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: AppStyles.body2ExtraBold.copyWith(fontSize: 16),
-        ),
-        const SizedBox(height: 4),
         CarInfoRow(
           icon: Icons.location_on_outlined,
           label: car.location ?? l10n.riyadh,
@@ -146,19 +152,17 @@ class _DetailsButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () => context.push(AppRouter.carDetails, extra: car),
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
+          backgroundColor: AppColors.primarySky,
           foregroundColor: AppColors.white,
           elevation: 0,
           shape: RoundedRectangleBorder(
+            side: BorderSide(color: AppColors.primary),
             borderRadius: BorderRadius.circular(12),
           ),
         ),
         child: Text(
           l10n.show_details,
-          style: AppStyles.captionBold.copyWith(
-            fontSize: 11,
-            color: AppColors.white,
-          ),
+          style: AppStyles.captionBold.copyWith(color: AppColors.primary),
         ),
       ),
     );

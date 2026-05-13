@@ -3,14 +3,15 @@ import 'package:equatable/equatable.dart';
 class CarModel extends Equatable {
   final int id;
   final String carImage;
-  
+
   // Flattened from car_info
   final String name;
   final String brand;
   final int year;
   final String price;
   final String? location;
-  
+  final String? distance;
+
   // Details fields
   final String? transmission;
   final String? category;
@@ -22,11 +23,11 @@ class CarModel extends Equatable {
   final String? showroomName;
   final String? installmentPrice;
   final String? description;
-  
+
   // Flattened from discount
   final int discount;
   final bool hasDiscount;
-  
+
   final bool isFav;
   final String createdAt;
 
@@ -38,6 +39,7 @@ class CarModel extends Equatable {
     required this.year,
     required this.price,
     this.location,
+    this.distance,
     this.transmission,
     this.category,
     this.engine,
@@ -57,7 +59,7 @@ class CarModel extends Equatable {
   factory CarModel.fromJson(Map<String, dynamic> json) {
     final info = json['car_info'] as Map<String, dynamic>? ?? {};
     final disc = json['discount'] as Map<String, dynamic>? ?? {};
-    
+
     return CarModel(
       id: (json['id'] as num?)?.toInt() ?? 0,
       carImage: json['car_image']?.toString() ?? '',
@@ -66,6 +68,7 @@ class CarModel extends Equatable {
       year: (info['year'] as num?)?.toInt() ?? 0,
       price: info['price']?.toString() ?? '',
       location: info['location']?.toString(),
+      distance: info['distance']?.toString(),
       transmission: info['transmission']?.toString(),
       category: info['category']?.toString(),
       engine: info['engine']?.toString(),
@@ -99,14 +102,12 @@ class CarModel extends Equatable {
       'mileage': mileage,
       'condition': condition,
       'color': color,
+      'distance': distance,
       'showroom_name': showroomName,
       'installment_price': installmentPrice,
     },
     'description': description,
-    'discount': {
-      'discount': discount,
-      'has_discount': hasDiscount,
-    },
+    'discount': {'discount': discount, 'has_discount': hasDiscount},
     'is_fav': isFav,
     'created_at': createdAt,
   };
@@ -124,6 +125,7 @@ class CarModel extends Equatable {
     String? engine,
     String? fuelType,
     String? mileage,
+    String? distance,
     String? condition,
     String? color,
     String? showroomName,
@@ -147,6 +149,7 @@ class CarModel extends Equatable {
       engine: engine ?? this.engine,
       fuelType: fuelType ?? this.fuelType,
       mileage: mileage ?? this.mileage,
+      distance: distance ?? this.distance,
       condition: condition ?? this.condition,
       color: color ?? this.color,
       showroomName: showroomName ?? this.showroomName,
@@ -161,26 +164,27 @@ class CarModel extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        carImage,
-        name,
-        brand,
-        year,
-        price,
-        location,
-        transmission,
-        category,
-        engine,
-        fuelType,
-        mileage,
-        condition,
-        color,
-        showroomName,
-        installmentPrice,
-        description,
-        discount,
-        hasDiscount,
-        isFav,
-        createdAt
-      ];
+    id,
+    carImage,
+    name,
+    brand,
+    year,
+    price,
+    location,
+    transmission,
+    category,
+    engine,
+    fuelType,
+    mileage,
+    condition,
+    color,
+    showroomName,
+    installmentPrice,
+    description,
+    discount,
+    hasDiscount,
+    isFav,
+    createdAt,
+    distance,
+  ];
 }

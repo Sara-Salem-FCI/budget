@@ -29,12 +29,6 @@ class SectionHeaderWidget extends StatelessWidget {
             onTap: onMoreTap,
             child: Row(
               children: [
-                const Icon(
-                  Icons.arrow_back,
-                  color: Colors.grey,
-                  size: 16,
-                ),
-                const SizedBox(width: 4),
                 Text(
                   actionText ?? l10n.more,
                   style: const TextStyle(

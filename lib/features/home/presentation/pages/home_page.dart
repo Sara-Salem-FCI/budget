@@ -47,13 +47,9 @@ class HomePage extends StatelessWidget {
                   return CustomScrollView(
                     slivers: [
                       // Top App Bar Area
-                      SliverToBoxAdapter(
-                        child: HomeHeader(user: state.user),
-                      ),
+                      SliverToBoxAdapter(child: HomeHeader(user: state.user)),
                       // Banner Section
-                      const SliverToBoxAdapter(
-                        child: HomeBanner(),
-                      ),
+                      const SliverToBoxAdapter(child: HomeBanner()),
                       // Search Section
                       const SliverToBoxAdapter(
                         child: Padding(
@@ -68,10 +64,13 @@ class HomePage extends StatelessWidget {
                           child: Column(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 16),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                ),
                                 child: SectionHeaderWidget(
                                   title: l10n.current_offers,
-                                  onMoreTap: () => context.push(AppRouter.availableCars),
+                                  onMoreTap: () =>
+                                      context.push(AppRouter.currentOffers),
                                 ),
                               ),
                               const SizedBox(height: 16),
@@ -86,7 +85,8 @@ class HomePage extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 16),
                           child: SectionHeaderWidget(
                             title: l10n.available_cars,
-                            onMoreTap: () => context.push(AppRouter.availableCars),
+                            onMoreTap: () =>
+                                context.push(AppRouter.availableCars),
                           ),
                         ),
                       ),
@@ -98,7 +98,9 @@ class HomePage extends StatelessWidget {
                           child: Column(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 16),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                ),
                                 child: SectionHeaderWidget(
                                   title: l10n.recently_viewed,
                                 ),

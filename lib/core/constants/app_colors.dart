@@ -5,6 +5,8 @@ abstract class AppColors {
   /// The primary deep blue color used throughout the app.
   static const Color primary = Color(0xFF053E94);
   static const Color orange = Color(0xFFEF6423);
+
+  static const Color primarySky = Color(0xFF7799CC);
   
   /// Pure white color for backgrounds and text.
   static const Color white = Color(0xFFFFFFFF);

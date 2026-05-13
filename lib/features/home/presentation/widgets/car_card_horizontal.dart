@@ -89,7 +89,7 @@ class CarCardHorizontal extends StatelessWidget {
                         const SizedBox(height: 2),
                         CarInfoRow(
                           icon: Icons.speed_outlined,
-                          label: l10n.mileage_km('16,000'), // Replace with car.mileage when available
+                          label: car.distance ?? '',
                         ),
                       ],
                     ),

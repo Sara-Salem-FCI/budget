@@ -14,6 +14,7 @@ import 'package:budget/features/search/presentation/pages/search_page.dart';
 import 'package:budget/features/favorites/presentation/pages/favorites_page.dart';
 import 'package:budget/features/profile/presentation/pages/profile_page.dart';
 import 'package:budget/features/home/presentation/pages/available_cars_page.dart';
+import 'package:budget/features/home/presentation/pages/current_offers_page.dart';
 import 'package:budget/features/notifications/presentation/pages/notifications_page.dart';
 
 import 'package:budget/features/profile/presentation/pages/terms_and_conditions_page.dart';
@@ -37,6 +38,7 @@ abstract class AppRouter {
   static const String favorites = '/favorites';
   static const String profile = '/profile';
   static const String availableCars = '/available-cars';
+  static const String currentOffers = '/current-offers';
   static const String notifications = '/notifications';
   static const String termsAndConditions = '/terms-conditions';
   static const String privacyPolicy = '/privacy-policy';
@@ -51,7 +53,8 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: carDetails,
-        builder: (context, state) => CarDetailsPage(car: state.extra as CarModel),
+        builder: (context, state) =>
+            CarDetailsPage(car: state.extra as CarModel),
       ),
       GoRoute(
         path: termsAndConditions,
@@ -66,17 +69,15 @@ abstract class AppRouter {
         builder: (context, state) => const AvailableCarsPage(),
       ),
       GoRoute(
-        path: splash,
-        builder: (context, state) => const SplashPage(),
+        path: currentOffers,
+        builder: (context, state) => const CurrentOffersPage(),
       ),
+      GoRoute(path: splash, builder: (context, state) => const SplashPage()),
       GoRoute(
         path: onboarding,
         builder: (context, state) => const OnboardingPage(),
       ),
-      GoRoute(
-        path: login,
-        builder: (context, state) => const LoginPage(),
-      ),
+      GoRoute(path: login, builder: (context, state) => const LoginPage()),
       GoRoute(
         path: register,
         builder: (context, state) => const RegisterPage(),
