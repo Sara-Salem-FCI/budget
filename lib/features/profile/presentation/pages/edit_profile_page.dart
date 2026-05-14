@@ -139,80 +139,121 @@ class _EditProfilePageState extends State<EditProfilePage> {
             backgroundColor: Colors.transparent,
             elevation: 0,
             centerTitle: true,
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back_ios_new_rounded),
-              color: AppColors.primary,
-              onPressed: () => context.pop(),
-            ),
+            leading: const SizedBox.shrink(),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.arrow_forward_rounded, size: 32),
+                color: AppColors.grey.withValues(alpha: 0.5),
+                onPressed: () => context.pop(),
+              ),
+              SizedBox(width: 8.w),
+            ],
             title: Text(
               l10n.edit_profile,
-              style: AppStyles.body2ExtraBold,
+              style: AppStyles.heading3.copyWith(fontWeight: FontWeight.bold),
             ),
           ),
+
           body: SafeArea(
-            child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Center(
-                      child: ProfileEditAvatarPicker(
-                        networkImageUrl: ready.user.profileImage,
-                        localImagePath: ready.pickedImagePath,
-                        onPickPressed: () => _pickImage(cubit),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return SingleChildScrollView(
+                  padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight - 24.h, // Subtract vertical padding
+                    ),
+                    child: IntrinsicHeight(
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Center(
+                              child: ProfileEditAvatarPicker(
+                                networkImageUrl: ready.user.profileImage,
+                                localImagePath: ready.pickedImagePath,
+                                onPickPressed: () => _pickImage(cubit),
+                                radius: 80,
+                              ),
+                            ),
+                            SizedBox(height: 24.h),
+                            _buildLabel(l10n.email),
+
+                            AuthTextField(
+                              label: '', // Hide internal label
+                              hint: l10n.email_hint,
+                              keyboardType: TextInputType.emailAddress,
+                              controller: _emailController,
+                              textDirection: TextDirection.ltr,
+                              validator: (v) {
+                                final t = v?.trim() ?? '';
+                                if (t.isEmpty) return l10n.field_required;
+                                if (!FormValidators.isValidEmail(t)) {
+                                  return l10n.invalid_email;
+                                }
+                                return null;
+                              },
+                            ),
+                            SizedBox(height: 16.h),
+                            _buildLabel(l10n.full_name),
+
+                            AuthTextField(
+                              label: '', // Hide internal label
+                              hint: l10n.full_name_hint,
+                              controller: _nameController,
+                              validator: (v) {
+                                final t = v?.trim() ?? '';
+                                if (t.isEmpty) return l10n.field_required;
+                                if (!FormValidators.hasMinTrimmedLength(t, 2)) {
+                                  return l10n.field_required;
+                                }
+                                return null;
+                              },
+                            ),
+                            const Spacer(),
+                            SizedBox(height: 40.h),
+                            AuthButton(
+                              text: l10n.update_profile_action,
+                              isLoading: ready.isSaving,
+                              onPressed: () {
+                                if (!_formKey.currentState!.validate()) return;
+                                cubit.submit(
+                                  name: _nameController.text,
+                                  email: _emailController.text,
+                                );
+                              },
+                            ),
+                            SizedBox(height: 10.h),
+                          ],
+                        ),
                       ),
                     ),
-                    SizedBox(height: 28.h),
-                    AuthTextField(
-                      label: l10n.email,
-                      hint: l10n.email_hint,
-                      keyboardType: TextInputType.emailAddress,
-                      controller: _emailController,
-                      textDirection: TextDirection.ltr,
-                      validator: (v) {
-                        final t = v?.trim() ?? '';
-                        if (t.isEmpty) return l10n.field_required;
-                        if (!FormValidators.isValidEmail(t)) {
-                          return l10n.invalid_email;
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: 18.h),
-                    AuthTextField(
-                      label: l10n.full_name,
-                      hint: l10n.full_name_hint,
-                      controller: _nameController,
-                      validator: (v) {
-                        final t = v?.trim() ?? '';
-                        if (t.isEmpty) return l10n.field_required;
-                        if (!FormValidators.hasMinTrimmedLength(t, 2)) {
-                          return l10n.field_required;
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: 32.h),
-                    AuthButton(
-                      text: l10n.update_profile_action,
-                      isLoading: ready.isSaving,
-                      onPressed: () {
-                        if (!_formKey.currentState!.validate()) return;
-                        cubit.submit(
-                          name: _nameController.text,
-                          email: _emailController.text,
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
+                  ),
+                );
+              },
             ),
           ),
+
         );
       },
     );
   }
+
+  Widget _buildLabel(String text) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 4.w),
+      child: Text(
+        text,
+        textAlign: TextAlign.start, // Label is start-aligned
+        style: AppStyles.body1.copyWith(
+          color: AppColors.grey,
+          fontWeight: FontWeight.bold,
+          fontSize: 16.sp,
+        ),
+      ),
+    );
+  }
 }
+

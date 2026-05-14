@@ -47,25 +47,32 @@ class ProfileEditAvatarPicker extends StatelessWidget {
               : null,
         ),
         Positioned(
-          right: -2.w,
-          bottom: -2.h,
-          child: Material(
-            color: AppColors.primary,
-            borderRadius: BorderRadius.circular(10.r),
-            child: InkWell(
-              onTap: onPickPressed,
-              borderRadius: BorderRadius.circular(10.r),
-              child: Padding(
-                padding: EdgeInsets.all(8.r),
-                child: Icon(
-                  Icons.photo_library_outlined,
-                  color: AppColors.white,
-                  size: 20.sp,
+          right: 2.w,
+          bottom: 2.h,
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColors.primary,
+              borderRadius: BorderRadius.circular(12.r),
+              border: Border.all(color: AppColors.white, width: 2.w),
+            ),
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: onPickPressed,
+                borderRadius: BorderRadius.circular(12.r),
+                child: Padding(
+                  padding: EdgeInsets.all(6.r),
+                  child: Icon(
+                    Icons.image_outlined,
+                    color: AppColors.white,
+                    size: 24.sp,
+                  ),
                 ),
               ),
             ),
           ),
         ),
+
       ],
     );
   }

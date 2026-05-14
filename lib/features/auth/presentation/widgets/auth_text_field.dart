@@ -37,23 +37,26 @@ class AuthTextField extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 4.w),
-              child: Text(
-                label,
-                style: AppStyles.body1.copyWith(
-                  color: Colors.black87,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.sp,
+            if (label.isNotEmpty) ...[
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 4.w),
+                child: Text(
+                  label,
+                  style: AppStyles.body1.copyWith(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.sp,
+                  ),
                 ),
               ),
-            ),
+            ],
             SizedBox(height: 6.h),
             Material(
-              elevation: 8,
+              elevation: 2,
               shadowColor: Colors.black.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12.r),
               color: AppColors.white,
+
               child: TextFormField(
                 controller: controller,
                 textDirection: textDirection,
@@ -75,8 +78,9 @@ class AuthTextField extends StatelessWidget {
                   prefixIcon: prefix,
                   contentPadding: EdgeInsets.symmetric(
                     horizontal: 16.w,
-                    vertical: 14.h,
+                    vertical: 10.h,
                   ),
+
                   filled: true,
                   fillColor: AppColors.white,
                   border: OutlineInputBorder(
