@@ -16,18 +16,14 @@ class LanguageDialogHeader extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-      decoration: const BoxDecoration(
-        color: Color(0xFFE3EDFF),
-        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-      ),
+      padding: const EdgeInsets.only(top: 24, bottom: 16, left: 16, right: 16),
       child: Stack(
         alignment: Alignment.center,
         children: [
           Align(
-            alignment: Alignment.centerLeft,
+            alignment: AlignmentDirectional.centerStart,
             child: IconButton(
-              icon: const Icon(Icons.close, color: Colors.black),
+              icon: const Icon(Icons.close, color: Colors.black, size: 28),
               onPressed: onClose,
             ),
           ),
@@ -35,7 +31,7 @@ class LanguageDialogHeader extends StatelessWidget {
             l10n.language,
             style: AppStyles.heading3.copyWith(
               fontWeight: FontWeight.bold,
-              color: Colors.black,
+              color: Colors.black87,
             ),
           ),
         ],

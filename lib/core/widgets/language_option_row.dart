@@ -35,6 +35,7 @@ class LanguageOptionRow extends StatelessWidget {
               }
             },
       activeColor: const Color(0xFF4CAF50),
+      controlAffinity: ListTileControlAffinity.leading,
       title: Row(
         children: [
           Text(flagEmoji, style: const TextStyle(fontSize: 24)),
@@ -42,14 +43,18 @@ class LanguageOptionRow extends StatelessWidget {
           Expanded(
             child: Text(
               title,
+              textAlign: TextAlign.start,
               style: AppStyles.body1.copyWith(
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                color: Colors.black87,
               ),
             ),
           ),
         ],
       ),
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+
+      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
     );
+
   }
 }

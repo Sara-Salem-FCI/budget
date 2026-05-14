@@ -23,6 +23,14 @@ abstract class AppColors {
   /// Vibrant sky blue for top wave/gradient.
   static const Color lightBlue = Color(0xFF64B5F6);
 
+  /// Success green color for indicators and buttons.
+
+  static const Color success = Color(0xFF4CAF50);
+
+  /// Light icy blue color used for dialog backgrounds.
+  static const Color dialogBlue = Color(0xFFE3EDF7);
+
   /// Dark background color if needed.
   static const Color background = Color(0xFFF8F9FA);
 }
+

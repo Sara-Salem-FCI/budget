@@ -5,6 +5,8 @@ import 'package:budget/core/widgets/language_dialog_header.dart';
 import 'package:budget/core/widgets/language_option_row.dart';
 import 'package:budget/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 /// Dialog for choosing app language. Calls [onLanguageSelected] which must
 /// return `null` on success or an error message (key or server text) on failure.
@@ -72,45 +74,68 @@ class _LanguageDialogState extends State<LanguageDialog> {
     final l10n = AppLocalizations.of(context)!;
 
     return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-      backgroundColor: const Color(0xFFE3EDFF),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          LanguageDialogHeader(onClose: () => Navigator.pop(context)),
-          const Divider(height: 1, color: Colors.white),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: IgnorePointer(
-              ignoring: _isSubmitting,
-              child: Opacity(
-                opacity: _isSubmitting ? 0.55 : 1,
-                child: Column(
-                  children: [
-                    LanguageOptionRow(
-                      title: l10n.arabic,
-                      flagEmoji: '🇸🇦',
-                      value: 'ar',
-                      groupValue: _selectedLocale,
-                      enabled: !_isSubmitting,
-                      onSelected: _handleSelection,
-                    ),
-                    LanguageOptionRow(
-                      title: l10n.english,
-                      flagEmoji: '🇺🇸',
-                      value: 'en',
-                      groupValue: _selectedLocale,
-                      enabled: !_isSubmitting,
-                      onSelected: _handleSelection,
-                    ),
-                  ],
+
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
+      elevation: 8,
+      backgroundColor: Colors.transparent,
+      child: Container(
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(32),
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              AppColors.dialogBlue,
+              AppColors.white,
+            ],
+          ),
+
+
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            LanguageDialogHeader(onClose: () => Navigator.pop(context)),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              child: Container(height: 1.h, color: Colors.white.withValues(alpha: 0.8)),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 16.h),
+
+              child: IgnorePointer(
+                ignoring: _isSubmitting,
+                child: Opacity(
+                  opacity: _isSubmitting ? 0.55 : 1,
+                  child: Column(
+                    children: [
+                      LanguageOptionRow(
+                        title: l10n.arabic,
+                        flagEmoji: '🇸🇦',
+                        value: 'ar',
+                        groupValue: _selectedLocale,
+                        enabled: !_isSubmitting,
+                        onSelected: _handleSelection,
+                      ),
+                      LanguageOptionRow(
+                        title: l10n.english,
+                        flagEmoji: '🇺🇸',
+                        value: 'en',
+                        groupValue: _selectedLocale,
+                        enabled: !_isSubmitting,
+                        onSelected: _handleSelection,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(height: 16),
-        ],
+            const SizedBox(height: 16),
+          ],
+        ),
       ),
     );
   }
 }
+
