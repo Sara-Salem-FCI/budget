@@ -24,13 +24,19 @@ class HomeCubit extends Cubit<HomeState> {
       _repository.getActiveCars(),
       _repository.getCurrentOffers(),
       _repository.getLastSeen(),
-      _authRepository.getUser(),
+      _authRepository.fetchProfile(),
     ]);
-
+  
     final activeCarsResult = results[0] as Either<Failure, CarResponseModel>;
     final currentOffersResult = results[1] as Either<Failure, CarResponseModel>;
     final lastSeenResult = results[2] as Either<Failure, CarResponseModel>;
-    final user = results[3] as UserModel?;
+    final profileResult = results[3] as Either<Failure, UserModel>;
+
+    final user = await profileResult.fold(
+      (failure) => _authRepository.getUser(),
+      (u) => Future.value(u),
+    );
+
 
     activeCarsResult.fold(
       (failure) {

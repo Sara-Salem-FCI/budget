@@ -27,6 +27,8 @@ abstract class AuthRepository {
   /// Persists an updated user snapshot (e.g. after profile settings change).
   Future<void> cacheUser(UserModel user);
   Future<Either<Failure, Unit>> deleteAccount();
+  Future<Either<Failure, UserModel>> fetchProfile();
+
 
   Future<Either<Failure, UserModel>> updateProfile({
     required UserModel currentUser,
@@ -47,7 +49,7 @@ class AuthRepositoryImpl with RepoErrorHandler implements AuthRepository {
   Future<Either<Failure, UserModel>> register(Map<String, dynamic> data) async {
     final result = await catchError(() => _remoteDataSource.register(data));
     return result.fold(
-      (failure) => Left(failure),
+      (failure) async => Left(failure),
       (user) async {
         if (user.token != null) {
           await _localDataSource.saveToken(user.token!);
@@ -58,13 +60,14 @@ class AuthRepositoryImpl with RepoErrorHandler implements AuthRepository {
         return Right(user);
       },
     );
+
   }
 
   @override
   Future<Either<Failure, UserModel>> login(Map<String, dynamic> data) async {
     final result = await catchError(() => _remoteDataSource.login(data));
     return result.fold(
-      (failure) => Left(failure),
+      (failure) async => Left(failure),
       (user) async {
         if (user.token != null) {
           await _localDataSource.saveToken(user.token!);
@@ -75,6 +78,7 @@ class AuthRepositoryImpl with RepoErrorHandler implements AuthRepository {
         return Right(user);
       },
     );
+
   }
 
   @override
@@ -97,7 +101,7 @@ class AuthRepositoryImpl with RepoErrorHandler implements AuthRepository {
   Future<Either<Failure, Map<String, dynamic>>> genericVerificationOtp(Map<String, dynamic> data) async {
     final result = await catchError(() => _remoteDataSource.genericVerificationOtp(data));
     return result.fold(
-      (failure) => Left(failure),
+      (failure) async => Left(failure),
       (response) async {
         final token = response['data']?['token'];
         final userData = response['data']?['user'];
@@ -111,13 +115,14 @@ class AuthRepositoryImpl with RepoErrorHandler implements AuthRepository {
         return Right(response);
       },
     );
+
   }
 
   @override
   Future<Either<Failure, Map<String, dynamic>>> verifyOtp(Map<String, dynamic> data) async {
     final result = await catchError(() => _remoteDataSource.verifyOtp(data));
     return result.fold(
-      (failure) => Left(failure),
+      (failure) async => Left(failure),
       (response) async {
         final token = response['data']?['token'];
         final userData = response['data']?['user'];
@@ -131,6 +136,7 @@ class AuthRepositoryImpl with RepoErrorHandler implements AuthRepository {
         return Right(response);
       },
     );
+
   }
 
   @override
@@ -177,6 +183,28 @@ class AuthRepositoryImpl with RepoErrorHandler implements AuthRepository {
   }
 
   @override
+  Future<Either<Failure, UserModel>> fetchProfile() async {
+    final currentUser = await getUser();
+    if (currentUser == null) {
+      return const Left(ServerFailure('error_not_authenticated'));
+    }
+
+
+    final result = await catchError(() => _remoteDataSource.getProfile(currentUser));
+    return result.fold(
+      (failure) async => Left(failure),
+      (user) async {
+        await _localDataSource.saveUserData(jsonEncode(user.toJson()));
+        return Right(user);
+      },
+    );
+
+  }
+
+
+
+
+  @override
   Future<Either<Failure, UserModel>> updateProfile({
     required UserModel currentUser,
     required String name,
@@ -192,7 +220,7 @@ class AuthRepositoryImpl with RepoErrorHandler implements AuthRepository {
       ),
     );
     return result.fold(
-      (failure) => Left(failure),
+      (failure) async => Left(failure),
       (user) async {
         await _localDataSource.saveUserData(jsonEncode(user.toJson()));
         return Right(user);
@@ -204,7 +232,7 @@ class AuthRepositoryImpl with RepoErrorHandler implements AuthRepository {
   Future<Either<Failure, UserModel>> guestLogin(String fcmToken) async {
     final result = await catchError(() => _remoteDataSource.guestLogin(fcmToken));
     return result.fold(
-      (failure) => Left(failure),
+      (failure) async => Left(failure),
       (user) async {
         if (user.token != null) {
           await _localDataSource.saveToken(user.token!);
@@ -215,13 +243,14 @@ class AuthRepositoryImpl with RepoErrorHandler implements AuthRepository {
         return Right(user);
       },
     );
+
   }
 
   @override
   Future<Either<Failure, UserModel>> socialAuth(String uid, String fcmToken) async {
     final result = await catchError(() => _remoteDataSource.socialAuth(uid, fcmToken));
     return result.fold(
-      (failure) => Left(failure),
+      (failure) async => Left(failure),
       (user) async {
         if (user.token != null) {
           await _localDataSource.saveToken(user.token!);
@@ -232,5 +261,6 @@ class AuthRepositoryImpl with RepoErrorHandler implements AuthRepository {
         return Right(user);
       },
     );
+
   }
 }

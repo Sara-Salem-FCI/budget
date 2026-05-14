@@ -13,6 +13,8 @@ abstract class ApiConstants {
   static const String socialAuth = 'auth/social-auth';
   static const String logout = 'auth/logout';
   static const String updateProfile = 'auth/update-profile';
+  static const String getProfile = 'auth/profile';
+
 
   // Apple Sign-In Config
   static const String appleClientId = 'com.example.budget.service';

@@ -17,6 +17,9 @@ abstract class AuthRemoteDataSource {
   Future<UserModel> socialAuth(String uid, String fcmToken);
   Future<void> logout();
   Future<void> deleteAccount();
+  Future<UserModel> getProfile(UserModel currentUser);
+
+
 
   /// Multipart `POST auth/update-profile`. Merges response [data] into [currentUser] (keeps token).
   Future<UserModel> updateProfile({
@@ -119,6 +122,15 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       );
     }
   }
+
+  @override
+  Future<UserModel> getProfile(UserModel currentUser) async {
+    final response = await _dio.get(ApiConstants.getProfile);
+    final userData = response.data['data'];
+    return UserModel.fromUpdateProfileResponse(userData, currentUser);
+  }
+
+
 
   @override
   Future<UserModel> updateProfile({

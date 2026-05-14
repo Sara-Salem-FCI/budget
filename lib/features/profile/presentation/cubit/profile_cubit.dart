@@ -14,9 +14,17 @@ class ProfileCubit extends Cubit<ProfileState> {
     if (state is! ProfileLoaded) {
       emit(ProfileLoading());
     }
-    final user = await _authRepository.getUser();
-    emit(ProfileLoaded(user));
+    final result = await _authRepository.fetchProfile();
+    result.fold(
+      (failure) async {
+        // If fetch fails, fallback to cached user
+        final user = await _authRepository.getUser();
+        emit(ProfileLoaded(user));
+      },
+      (user) => emit(ProfileLoaded(user)),
+    );
   }
+
 
   Future<void> setNotificationsEnabled(bool enabled) async {
     if (state is! ProfileLoaded) return;
